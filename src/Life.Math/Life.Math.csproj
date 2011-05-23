@@ -43,6 +43,7 @@
     <Compile Include="Ray.cs" />
     <Compile Include="Matrix4.cs" />
     <Compile Include="Plane.cs" />
+    <Compile Include="Vector2.cs" />
     <Compile Include="Vector3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

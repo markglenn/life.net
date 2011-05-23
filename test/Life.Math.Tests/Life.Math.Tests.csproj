@@ -46,6 +46,7 @@
     <Compile Include="Matrix4Tests.cs" />
     <Compile Include="PlaneTests.cs" />
     <Compile Include="RayTests.cs" />
+    <Compile Include="Vector2Tests.cs" />
     <Compile Include="Vector3Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -9,11 +9,21 @@ namespace Life.Math
         Coplanar
     }
 
+    /// <summary>
+    /// Three dimensional plane
+    /// </summary>
     public class Plane
     {
         #region [ Public Properties ]
         
+        /// <summary>
+        /// Normal vector
+        /// </summary>
         public readonly Vector3 Normal;
+
+        /// <summary>
+        /// Plane D component
+        /// </summary>
         public readonly float D;
 
         #endregion [ Public Properties ]

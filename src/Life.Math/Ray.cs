@@ -9,7 +9,14 @@ namespace Life.Math
     {
         #region [ Public Properties ]
 
+        /// <summary>
+        /// Ray origin
+        /// </summary>
         public readonly Vector3 Origin;
+
+        /// <summary>
+        /// Direction of ray
+        /// </summary>
         public readonly Vector3 Direction;
 
         #endregion [ Public Properties ]

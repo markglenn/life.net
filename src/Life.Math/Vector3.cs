@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Life.Math
 {
+    [StructLayout( LayoutKind.Sequential, Pack = 1 )]
     public struct Vector3 : IEquatable<Vector3>
     {
         #region [ Public Members ]
@@ -12,6 +14,12 @@ namespace Life.Math
 
         #endregion [ Public Members ]
 
+        /// <summary>
+        /// Constructs a new vector
+        /// </summary>
+        /// <param name="x">X component</param>
+        /// <param name="y">Y component</param>
+        /// <param name="z">Z component</param>
         public Vector3( float x, float y, float z )
         {
             this.X = x;
@@ -19,14 +27,32 @@ namespace Life.Math
             this.Z = z;
         }
 
+        /// <summary>
+        /// Returns the length of the vector
+        /// </summary>
+        /// <returns>Vector length</returns>
         public float Length( )
         {
             return ( float ) System.Math.Sqrt( LengthSquared( ) );
         }
 
+        /// <summary>
+        /// Returns the squared length of the vector
+        /// </summary>
+        /// <remarks>Used for expensive operations that will do square root at the end</remarks>
+        /// <returns>Squared length of vector</returns>
         public float LengthSquared( )
         {
             return this.X * this.X + this.Y * this.Y + this.Z * this.Z;
+        }
+
+        /// <summary>
+        /// Returns a unit length vector
+        /// </summary>
+        /// <returns></returns>
+        public Vector3 Unit( )
+        {
+            return this / Length( );
         }
 
         #region [ Equality Methods ]
@@ -151,9 +177,5 @@ namespace Life.Math
 
         #endregion [ Static Properties ]
 
-        public Vector3 Unit( )
-        {
-            return this / Length( );
-        }
     }
 }

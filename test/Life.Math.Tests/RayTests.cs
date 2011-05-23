@@ -16,7 +16,6 @@ namespace Life.Math.Tests
 
             Assert.AreEqual( origin, ray.Origin );
             Assert.AreEqual( direction, ray.Direction );
-
         }
     }
 }
