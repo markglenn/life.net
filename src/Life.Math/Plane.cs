@@ -1,10 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Life.Math
 {
+    public enum PlaneSide
+    {
+        Front,
+        Back,
+        Coplanar
+    }
+
     public class Plane
     {
         #region [ Public Properties ]
@@ -13,6 +17,8 @@ namespace Life.Math
         public readonly float D;
 
         #endregion [ Public Properties ]
+
+        #region [ Constructors ]
 
         public Plane( Vector3 normal, float d )
         {
@@ -26,9 +32,23 @@ namespace Life.Math
             this.D = d;
         }
 
+        #endregion [ Constructors ]
+
         public float DistanceTo( Vector3 point )
         {
             return Vector3.Dot( this.Normal, point ) + this.D; 
+        }
+
+        public PlaneSide Side( Vector3 point )
+        {
+            var distance = DistanceTo( point );
+
+            if ( distance > float.Epsilon )
+                return PlaneSide.Front;
+            if ( distance < -float.Epsilon )
+                return PlaneSide.Back;
+
+            return PlaneSide.Coplanar;
         }
     }
 }
