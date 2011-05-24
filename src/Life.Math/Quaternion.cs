@@ -85,5 +85,23 @@ namespace Life.Math
 
         #endregion [ Object Overrides ]
 
+        public static Quaternion Add( Quaternion left, Quaternion right )
+        {
+            return new Quaternion( left.W + right.W, left.V + right.V );
+        }
+
+        public static Quaternion Subtract( Quaternion left, Quaternion right )
+        {
+            return new Quaternion( left.W - right.W, left.V - right.V );
+        }
+
+        public static readonly Quaternion Identity = new Quaternion( 1, Vector3.Zero );
+
+        public static Quaternion Multiply( Quaternion left, Quaternion right )
+        {
+            return new Quaternion( 
+                left.W * right.W - Vector3.Dot( left.V, right.V ),
+                left.W * right.V + right.W * left.V + Vector3.Cross( left.V, right.V ) );
+        }
     }
 }

@@ -160,6 +160,11 @@ namespace Life.Math
             return Multiply( left, right );
         }
 
+        public static Vector3 operator *( float left, Vector3 right )
+        {
+            return Multiply( right, left );
+        }
+
         public static Vector3 operator -( Vector3 vector )
         {
             return new Vector3( -vector.X, -vector.Y, -vector.Z );

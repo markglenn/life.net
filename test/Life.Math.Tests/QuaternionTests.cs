@@ -72,6 +72,8 @@ namespace Life.Math.Tests
 
         #endregion
 
+        #region [ Conjugate Tests ]
+        
         [Test]
         public void Conjugate_CalculatesConjugate( )
         {
@@ -87,5 +89,38 @@ namespace Life.Math.Tests
 
             Assert.AreEqual( quaternion, quaternion.Conjugate( ).Conjugate( ) );
         }
+
+        #endregion
+
+        #region [ Math Tests ]
+
+        [Test]
+        public void Add_AddsTwoQuaternions( )
+        {
+            var q1 = new Quaternion( 1, 2, 3, 4 );
+            var q2 = new Quaternion( 2, 3, 4, 5 );
+
+            Assert.AreEqual( new Quaternion( 3, 5, 7, 9 ), Quaternion.Add( q1, q2 ) );
+        }
+
+        [Test]
+        public void Subtract_SubtractsTwoQuaternions( )
+        {
+            var q1 = new Quaternion( 1, 2, 3, 4 );
+            var q2 = new Quaternion( 2, 3, 4, 5 );
+
+            Assert.AreEqual( new Quaternion( -1, -1, -1, -1 ), Quaternion.Subtract( q1, q2 ) );
+        }
+
+        [Test]
+        public void Multiply_MultipliesQuaternions( )
+        {
+            var q1 = new Quaternion( 1, 2, 3, 4 );
+
+            Assert.AreEqual( q1, Quaternion.Multiply( q1, Quaternion.Identity ) );
+
+        }
+
+        #endregion
     }
 }
