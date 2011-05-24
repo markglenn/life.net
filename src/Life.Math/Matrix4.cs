@@ -45,7 +45,7 @@ namespace Life.Math
 
         public bool Equals( Matrix4 other )
         {
-            return Enumerable.SequenceEqual( this.M, other.M );
+            return this.M.SequenceEqual( other.M );
         }
 
         public override bool Equals( object obj )
