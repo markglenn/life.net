@@ -31,6 +31,12 @@ namespace Life.Math.Tests
         }
 
         [Test]
+        public void SquaredLength_ReturnsSquaredLength( )
+        {
+            Assert.AreEqual( 25, new Vector2( 3, 4 ).SquaredLength( ) );
+        }
+
+        [Test]
         public void Add_AddsTwoVectors( )
         {
             var result = Vector2.Add( new Vector2( 1, 2 ), new Vector2( 3, 4 ) );
@@ -46,5 +52,28 @@ namespace Life.Math.Tests
             Assert.AreEqual( new Vector2( -2, -2 ), result );
         }
 
+        [Test]
+        public void Multiply_MultipliesVectorWithScalar( )
+        {
+            var result = Vector2.Multiply( new Vector2( 1, 2 ), 3 );
+
+            Assert.AreEqual( new Vector2( 3, 6 ), result );
+        }
+
+        [Test]
+        public void Divide_DividesVectorByScalar( )
+        {
+            var result = Vector2.Divide( new Vector2( 2, 4 ), 2 );
+
+            Assert.AreEqual( new Vector2( 1, 2 ), result );
+        }
+
+        [Test]
+        public void Dot_ReturnsDotProduct( )
+        {
+            var product = Vector2.Dot( new Vector2( 1, 2 ), new Vector2( 2, 3 ) );
+
+            Assert.AreEqual( 8, product );
+        }
     }
 }

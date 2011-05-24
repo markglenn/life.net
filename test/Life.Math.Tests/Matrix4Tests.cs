@@ -127,5 +127,14 @@ namespace Life.Math.Tests
 
             Assert.AreEqual( expected, translation );
         }
+
+        [Test]
+        public void Mutliply_WithVectorAndMatrix_ReturnsVector( )
+        {
+            var vector = new Vector3( 1, 2, 3 );
+
+            Assert.AreEqual( vector, Matrix4.Multiply( vector, Matrix4.Identity ) );
+            Assert.AreEqual( vector + new Vector3( 1, 2, 3 ), Matrix4.Multiply( vector, Matrix4.Translation( 1, 2, 3 ) ) );
+        }
     }
 }

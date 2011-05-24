@@ -49,7 +49,7 @@ namespace Life.Math
         /// <summary>
         /// Returns a unit length vector
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Unit vector in same direction</returns>
         public Vector3 Unit( )
         {
             return this / Length( );

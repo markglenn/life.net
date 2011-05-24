@@ -120,7 +120,17 @@ namespace Life.Math
 
             );
         }
-        
+
+        public static object Multiply( Vector3 v, Matrix4 m )
+        {
+            float inv = 1.0f / ( m.M[ 3 ] * v.X + m.M[ 7 ] * v.Y + m.M[ 11 ] * v.Z + m.M[ 15 ] );
+
+            return new Vector3(
+                ( v.X * m.M[ 0 ] + v.Y * m.M[ 4 ] + v.Z * m.M[ 8 ] + m.M[ 12 ] ) * inv,
+                ( v.X * m.M[ 1 ] + v.Y * m.M[ 5 ] + v.Z * m.M[ 9 ] + m.M[ 13 ] ) * inv,
+                ( v.X * m.M[ 2 ] + v.Y * m.M[ 6 ] + v.Z * m.M[ 10 ] + m.M[ 14 ] ) * inv );
+        }
+
         public override string ToString( )
         {
             var sb = new StringBuilder( );
@@ -163,5 +173,6 @@ namespace Life.Math
                 0, 0, 1, 0,
                 x, y, z, 1 );
         }
+
     }
 }
