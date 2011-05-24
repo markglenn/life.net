@@ -22,6 +22,17 @@ namespace Life.Math
             this.V = v;
         }
 
+        public static Quaternion FromAxisAngle( Vector3 axis, float angle )
+        {
+            // The axis of rotation must be normalized 
+            // Compute the half angle and its sin 
+            var thetaOver2 = angle * .5f;
+            var sinThetaOver2 = ( float )System.Math.Sin( thetaOver2 );
+
+            return new Quaternion(
+                ( float )System.Math.Cos( thetaOver2 ), axis * sinThetaOver2 );
+        }
+
         /// <summary>
         /// Gets the squared length of the quaternion
         /// </summary>
@@ -83,7 +94,14 @@ namespace Life.Math
             }
         }
 
+        public override string ToString( )
+        {
+            return String.Format( "[{0}, {1}]", this.W, this.V );
+        }
+
         #endregion [ Object Overrides ]
+
+        #region [ Math Operations ]
 
         public static Quaternion Add( Quaternion left, Quaternion right )
         {
@@ -95,13 +113,35 @@ namespace Life.Math
             return new Quaternion( left.W - right.W, left.V - right.V );
         }
 
-        public static readonly Quaternion Identity = new Quaternion( 1, Vector3.Zero );
-
         public static Quaternion Multiply( Quaternion left, Quaternion right )
         {
             return new Quaternion( 
                 left.W * right.W - Vector3.Dot( left.V, right.V ),
                 left.W * right.V + right.W * left.V + Vector3.Cross( left.V, right.V ) );
         }
+
+        public static float Dot( Quaternion left, Quaternion right )
+        {
+            return left.W * right.W + Vector3.Dot( left.V, right.V );
+        }
+
+        public static Quaternion operator+( Quaternion left, Quaternion right )
+        {
+            return Quaternion.Add( left, right );
+        }
+
+        public static Quaternion operator-( Quaternion left, Quaternion right )
+        {
+            return Quaternion.Subtract( left, right );
+        }
+
+        public static Quaternion operator*( Quaternion left, Quaternion right )
+        {
+            return Quaternion.Multiply( left, right );
+        }
+
+        #endregion [ Math Operations ]
+
+        public static readonly Quaternion Identity = new Quaternion( 1, Vector3.Zero );
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Life.Math.Tests
 {
@@ -27,8 +26,6 @@ namespace Life.Math.Tests
         }
 
         #region Length Tests
-
-
 
         [Test]
         public void LengthSquared_ReturnsLengthSquared( )
@@ -118,7 +115,25 @@ namespace Life.Math.Tests
             var q1 = new Quaternion( 1, 2, 3, 4 );
 
             Assert.AreEqual( q1, Quaternion.Multiply( q1, Quaternion.Identity ) );
+        }
 
+        [Test]
+        public void Dot_ReturnsDotProduct( )
+        {
+            var q1 = new Quaternion( 1, 2, 3, 4 );
+            var q2 = new Quaternion( 2, 3, 4, 5 );
+
+            Assert.AreEqual( 40, Quaternion.Dot( q1, q2 ) );
+
+        }
+
+        [Test]
+        public void FromAxisAngle_CalculatesQuaternion( )
+        {
+            var result = Quaternion.FromAxisAngle( new Vector3( 1, 2, 3 ), ( float ) System.Math.PI / 2.0f );
+            var expected = new Quaternion( 0.7071068f, 0.7071068f, 1.414214f, 2.12132f );
+
+            Assert.That( Quaternion.Subtract( result, expected ).Length( ) < 0.001f );
         }
 
         #endregion
