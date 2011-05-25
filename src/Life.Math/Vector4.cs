@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Runtime.InteropServices;
 
 namespace Life.Math
 {
+    [StructLayout( LayoutKind.Sequential, Pack = 1 )]
     public struct Vector4 : IEquatable<Vector4>
     {
         public readonly float X;
@@ -101,7 +100,7 @@ namespace Life.Math
 
         public Vector4 Unit( )
         {
-            return Vector4.Divide( this, this.Length( ) );
+            return Divide( this, this.Length( ) );
         }
     }
 }
