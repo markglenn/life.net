@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.IO;
 using Life.Core.Archive;
 using NUnit.Framework;
@@ -8,13 +9,14 @@ namespace Life.Core.Tests.Archive
     [TestFixture]
     public class FolderArchiveTests
     {
-        private readonly string tempFolder = Path.GetTempPath( );
+        private readonly string tempFolder = Path.Combine( Path.GetTempPath( ), Guid.NewGuid( ).ToString( ) );
         private string existingFile;
         private IArchive archive;
 
         [TestFixtureSetUp]
         public void FixtureSetup( )
         {
+            Directory.CreateDirectory( tempFolder );
             this.existingFile = Path.Combine( tempFolder, Guid.NewGuid( ).ToString( ) );
             using ( var stream = File.CreateText( this.existingFile ) )
                 stream.Flush( );
@@ -23,13 +25,13 @@ namespace Life.Core.Tests.Archive
         [TestFixtureTearDown]
         public void FixtureTearDown( )
         {
-            File.Delete( this.existingFile );
+            Directory.Delete( tempFolder, true );
         }
 
         [SetUp]
         public void Setup( )
         {
-            this.archive = new FolderArchive( Path.GetTempPath( ) );
+            this.archive = new FolderArchive( this.tempFolder );
         }
 
         [Test]
@@ -96,6 +98,12 @@ namespace Life.Core.Tests.Archive
             this.archive.DeleteFile( filename );
 
             Assert.IsFalse( this.archive.Exists( filename ) );
+        }
+
+        [Test]
+        public void GetEnumerator_GetsEnumeratorOfFiles( )
+        {
+            Assert.That( this.archive.Any( i => i == Path.GetFileName( this.existingFile ) ) );
         }
     }
 }

@@ -59,7 +59,9 @@ namespace Life.Core.Archive
 
         public IEnumerator<string> GetEnumerator( )
         {
-            throw new NotImplementedException( );
+            return this.directory.EnumerateFiles( "*", SearchOption.AllDirectories )
+                .Select( f => GetRelativePath( this.directory.FullName, f.FullName ) )
+                .GetEnumerator( );
         }
 
         IEnumerator IEnumerable.GetEnumerator( )
@@ -83,5 +85,19 @@ namespace Life.Core.Archive
         }
 
         #endregion [ Implementation of IDisposable ]
+
+        #region [ Private Methods ]
+
+        private static string GetRelativePath( string directory, string filename )
+        {
+            filename = filename.Replace( directory, String.Empty );
+
+            if ( filename.StartsWith( "\\" ) )
+                filename = filename.Remove( 0, 1 );
+
+            return filename;
+        }
+
+        #endregion [ Private Methods ]
     }
 }
