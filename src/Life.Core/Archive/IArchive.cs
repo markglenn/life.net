@@ -19,8 +19,9 @@ namespace Life.Core.Archive
         /// <summary>
         /// Opens a file stream from the archive
         /// </summary>
+        /// <exception cref="FileNotFoundException">When file does not exist</exception>
         /// <param name="fileName">Name of the file inside the archive</param>
-        /// <returns>Returns a stream to the file or null if it doesn't exist</returns>
+        /// <returns>Returns a stream to the file</returns>
         Stream OpenFile( string fileName );
 
         /// <summary>
@@ -46,7 +47,6 @@ namespace Life.Core.Archive
         /// Deletes a file from the archive
         /// </summary>
         /// <param name="fileName">Filename to delete</param>
-        /// <returns>True if the file is deleted</returns>
-        bool DeleteFile( string fileName );
+        void DeleteFile( string fileName );
     }
 }

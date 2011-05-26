@@ -15,20 +15,11 @@ namespace Life.Core.Archive
         {
             this.directory = new DirectoryInfo( folder );
         }
-
-        #region [ Implementation of IEnumerable ]
-
-        public IEnumerator<string> GetEnumerator( )
+        
+        ~FolderArchive( )
         {
-            throw new NotImplementedException( );
+            Dispose( false );
         }
-
-        IEnumerator IEnumerable.GetEnumerator( )
-        {
-            return GetEnumerator( );
-        }
-
-        #endregion [ Implementation of IEnumerable ]
 
         #region [ Implementation of IArchive ]
 
@@ -44,7 +35,7 @@ namespace Life.Core.Archive
 
         public bool Exists( string fileName )
         {
-            throw new NotImplementedException( );
+            return File.Exists( Path.Combine( this.directory.FullName, fileName ) );
         }
 
         public bool IsReadOnly
@@ -54,21 +45,41 @@ namespace Life.Core.Archive
 
         public Stream CreateWritableStream( string fileName )
         {
-            throw new NotImplementedException( );
+            return File.Create( Path.Combine( this.directory.FullName, fileName ) );
         }
 
-        public bool DeleteFile( string fileName )
+        public void DeleteFile( string fileName )
+        {
+            File.Delete( Path.Combine( this.directory.FullName, fileName ) );
+        }
+
+        #endregion [ Implementation of IArchive ]
+
+        #region [ Implementation of IEnumerable ]
+
+        public IEnumerator<string> GetEnumerator( )
         {
             throw new NotImplementedException( );
         }
 
-        #endregion [ Implementation of IArchive ]
+        IEnumerator IEnumerable.GetEnumerator( )
+        {
+            return GetEnumerator( );
+        }
+
+        #endregion [ Implementation of IEnumerable ]
 
         #region [ Implementation of IDisposable ]
 
         public void Dispose( )
         {
-            throw new NotImplementedException( );
+            GC.SuppressFinalize( this );
+            Dispose( true );
+        }
+
+        protected virtual void Dispose( bool disposing )
+        {
+                
         }
 
         #endregion [ Implementation of IDisposable ]
