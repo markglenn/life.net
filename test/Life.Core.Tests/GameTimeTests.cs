@@ -17,5 +17,27 @@ namespace Life.Core.Tests
             Assert.AreEqual( TimeSpan.Zero, time.CurrentStep );
             Assert.AreEqual( TimeSpan.Zero, time.TotalTime );
         }
+
+        [Test]
+        public void Pause_PausesTimer( )
+        {
+            var time = new GameTime( );
+            Assert.IsFalse( time.IsPaused );
+
+            time.Pause( );
+
+            Assert.IsTrue( time.IsPaused );
+        }
+
+        [Test]
+        public void Resume_ResumesTimer( )
+        {
+            var time = new GameTime( );
+
+            time.Pause( );
+            time.Resume( );
+
+            Assert.IsFalse( time.IsPaused );
+        }
     }
 }

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archive\FolderArchive.cs" />
     <Compile Include="Archive\IArchive.cs" />
     <Compile Include="GameTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
