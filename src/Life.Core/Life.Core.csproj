@@ -46,6 +46,8 @@
     <Compile Include="Archive\FolderArchive.cs" />
     <Compile Include="Archive\IArchive.cs" />
     <Compile Include="GameTime.cs" />
+    <Compile Include="IService.cs" />
+    <Compile Include="Kernel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

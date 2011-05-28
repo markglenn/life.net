@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Archive\FolderArchiveTests.cs" />
     <Compile Include="GameTimeTests.cs" />
+    <Compile Include="KernelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

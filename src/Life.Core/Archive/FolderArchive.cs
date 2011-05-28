@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Life.Core.Archive
 {
     public class FolderArchive : IArchive
     {
+        #region [ Private Members ]
+
         private readonly DirectoryInfo directory;
+
+        #endregion [ Private Members ]
 
         public FolderArchive( string folder )
         {
@@ -92,8 +95,8 @@ namespace Life.Core.Archive
         {
             filename = filename.Replace( directory, String.Empty );
 
-            if ( filename.StartsWith( "\\" ) )
-                filename = filename.Remove( 0, 1 );
+            if ( filename.StartsWith( "\\" ) || filename.StartsWith( "/" ) )
+                return filename.Substring( 1 );
 
             return filename;
         }
