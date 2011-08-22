@@ -1,6 +1,9 @@
 *.user
 *.suo
 .*.swp
+*.pidb
+test-results
 */**/bin
 */**/obj
 _ReSharper*
+*.userprefs

@@ -1,17 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Math", "src\Life.Math\Life.Math.csproj", "{10BD7757-CCD5-4804-B87F-086BCDE024CD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F14EC61A-543C-4E7A-A60F-A43AB793F5F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Math.Tests", "test\Life.Math.Tests\Life.Math.Tests.csproj", "{0E64684F-2519-4E25-868D-A0840671AFE1}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E5615BC7-82B8-44A5-8E27-1AC32D501670}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Math", "src\Life.Math\Life.Math.csproj", "{10BD7757-CCD5-4804-B87F-086BCDE024CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Core", "src\Life.Core\Life.Core.csproj", "{1B9D624C-9801-428A-A296-78C37676A707}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Graphics", "src\Life.Graphics\Life.Graphics.csproj", "{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E5615BC7-82B8-44A5-8E27-1AC32D501670}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Math.Tests", "test\Life.Math.Tests\Life.Math.Tests.csproj", "{0E64684F-2519-4E25-868D-A0840671AFE1}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Core.Tests", "test\Life.Core.Tests\Life.Core.Tests.csproj", "{54C4805C-6C32-4CDA-9B6B-6A51F08882AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Graphics.Tests", "test\Life.Graphics.Tests\Life.Graphics.Tests.csproj", "{0525FA1D-96B4-4F61-9DBC-4DEABD5050DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,30 +23,43 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{10BD7757-CCD5-4804-B87F-086BCDE024CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10BD7757-CCD5-4804-B87F-086BCDE024CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10BD7757-CCD5-4804-B87F-086BCDE024CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10BD7757-CCD5-4804-B87F-086BCDE024CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0525FA1D-96B4-4F61-9DBC-4DEABD5050DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0525FA1D-96B4-4F61-9DBC-4DEABD5050DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0525FA1D-96B4-4F61-9DBC-4DEABD5050DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0525FA1D-96B4-4F61-9DBC-4DEABD5050DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E64684F-2519-4E25-868D-A0840671AFE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E64684F-2519-4E25-868D-A0840671AFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E64684F-2519-4E25-868D-A0840671AFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E64684F-2519-4E25-868D-A0840671AFE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10BD7757-CCD5-4804-B87F-086BCDE024CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10BD7757-CCD5-4804-B87F-086BCDE024CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10BD7757-CCD5-4804-B87F-086BCDE024CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10BD7757-CCD5-4804-B87F-086BCDE024CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B9D624C-9801-428A-A296-78C37676A707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B9D624C-9801-428A-A296-78C37676A707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B9D624C-9801-428A-A296-78C37676A707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B9D624C-9801-428A-A296-78C37676A707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{54C4805C-6C32-4CDA-9B6B-6A51F08882AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{54C4805C-6C32-4CDA-9B6B-6A51F08882AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54C4805C-6C32-4CDA-9B6B-6A51F08882AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54C4805C-6C32-4CDA-9B6B-6A51F08882AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{10BD7757-CCD5-4804-B87F-086BCDE024CD} = {F14EC61A-543C-4E7A-A60F-A43AB793F5F3}
 		{1B9D624C-9801-428A-A296-78C37676A707} = {F14EC61A-543C-4E7A-A60F-A43AB793F5F3}
+		{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA} = {F14EC61A-543C-4E7A-A60F-A43AB793F5F3}
 		{0E64684F-2519-4E25-868D-A0840671AFE1} = {E5615BC7-82B8-44A5-8E27-1AC32D501670}
 		{54C4805C-6C32-4CDA-9B6B-6A51F08882AA} = {E5615BC7-82B8-44A5-8E27-1AC32D501670}
+		{0525FA1D-96B4-4F61-9DBC-4DEABD5050DF} = {E5615BC7-82B8-44A5-8E27-1AC32D501670}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = src\Life.Math\Life.Math.csproj
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
