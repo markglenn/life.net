@@ -60,6 +60,8 @@ namespace Life.Graphics.OpenGL.Tests
 			{
 				using( buffer.Lock( BufferLock.Discard ) )
 					Assert.IsTrue( buffer.IsLocked );	
+					
+				Assert.IsFalse( buffer.IsLocked );
 			}
 		}
 	}
