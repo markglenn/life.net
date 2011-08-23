@@ -8,6 +8,10 @@ namespace Life.Graphics.OpenGL
 		#region [ Private Members ]
 		
 		private uint vboId;
+		private int offset;
+		
+		private readonly BufferUsageHint usage;
+		private readonly uint bufferSize;
 		
 		#endregion
 		
@@ -16,10 +20,19 @@ namespace Life.Graphics.OpenGL
 			get { return this.vboId; }
 		}
 		
-		public OpenGLVertexBuffer( VertexDefinition vertexDefinition, uint numVertices )
+		public uint BufferSize
+		{
+			get { return this.bufferSize; }
+		}
+		
+		public OpenGLVertexBuffer( VertexDefinition vertexDefinition, BufferUsage usage, uint numVertices )
 			: base( vertexDefinition, numVertices )
 		{
 			GL.GenBuffers( 1, out vboId );
+			
+			this.usage = ( usage == BufferUsage.Static ) ? 
+				BufferUsageHint.StaticDraw : BufferUsageHint.DynamicDraw;
+			this.bufferSize = vertexDefinition.Stride * numVertices;
 		}
 		
 		protected override void Dispose( bool disposing )
@@ -32,12 +45,21 @@ namespace Life.Graphics.OpenGL
 		
 		protected override bool DoLock (BufferLock lockType)
 		{
-			throw new NotImplementedException ();
+			if ( lockType != BufferLock.Discard )
+				throw new NotSupportedException( );
+				
+			GL.BindBuffer( BufferTarget.ArrayBuffer, this.vboId );
+			GL.BufferData( BufferTarget.ArrayBuffer, new IntPtr( this.bufferSize ),
+				IntPtr.Zero, this.usage );
+			
+			this.offset = 0;
+			
+			return GL.GetError( ) == ErrorCode.NoError;
 		}
 		
 		protected override void DoUnlock ()
 		{
-			throw new NotImplementedException ();
+			GL.BindBuffer( BufferTarget.ArrayBuffer, 0 );
 		}
 	}
 }
