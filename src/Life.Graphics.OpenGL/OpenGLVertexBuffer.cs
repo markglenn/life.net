@@ -61,6 +61,27 @@ namespace Life.Graphics.OpenGL
 		{
 			GL.BindBuffer( BufferTarget.ArrayBuffer, 0 );
 		}
+		
+		public override void Write<T>( T value )
+		{
+			Write( new[ ]{ value } );
+		}
+		
+		public override void Write<T>( T[ ] values )
+		{
+            // Calculate size of the write
+            int size = ( int )this.VertexDefinition.Stride * values.Length;
+
+            // Check bounds
+            if ( size + this.offset > this.bufferSize )
+                throw new InvalidOperationException( "Tried to write too much data to vertex buffer." );
+
+            GL.BufferSubData( BufferTarget.ArrayBuffer, 
+               ( IntPtr )this.offset, ( IntPtr )size, values );
+
+            this.offset += size;
+		}
+		
 	}
 }
 

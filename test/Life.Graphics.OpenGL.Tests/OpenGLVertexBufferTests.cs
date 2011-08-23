@@ -9,6 +9,11 @@ namespace Life.Graphics.OpenGL.Tests
 	[TestFixture]
 	public class OpenGLVertexBufferTests
 	{
+		struct Vertex
+		{
+			public float X, Y, Z;
+		}
+		
 		private GameWindow gameWindow;
 		private VertexElement element;
 		private VertexDefinition definition;
@@ -62,6 +67,32 @@ namespace Life.Graphics.OpenGL.Tests
 					Assert.IsTrue( buffer.IsLocked );	
 					
 				Assert.IsFalse( buffer.IsLocked );
+			}
+		}
+		
+		[Test]
+		public void Write_WritesToBuffer( )
+		{
+			using( var buffer = new OpenGLVertexBuffer( definition, BufferUsage.Static, 4 ) )
+			{
+				using( buffer.Lock( BufferLock.Discard ) )
+				{
+					buffer.Write<Vertex>( new Vertex{ X = 1, Y = 2, Z = 3 } );
+				}
+			}
+		}
+		
+		[Test]
+		public void Write_TooManyValues_ThrowsException( )
+		{
+			using( var buffer = new OpenGLVertexBuffer( definition, BufferUsage.Static, 1 ) )
+			{
+				using( buffer.Lock( BufferLock.Discard ) )
+				{
+					buffer.Write<Vertex>( new Vertex{ X = 1, Y = 2, Z = 3 } );
+					Assert.Throws<InvalidOperationException>( ( ) =>
+						buffer.Write<Vertex>( new Vertex{ X = 1, Y = 2, Z = 3 } ) );
+				}
 			}
 		}
 	}

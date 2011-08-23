@@ -24,6 +24,17 @@ namespace Life.Graphics.Tests
 			{
 				throw new NotImplementedException ();
 			}
+			
+			public override void Write<T>( T val )
+			{
+				throw new NotImplementedException ();
+			}
+			
+			public override void Write<T>( T[ ] val )
+			{
+				throw new NotImplementedException ();
+			}
+
 		}
 		
 		[Test]

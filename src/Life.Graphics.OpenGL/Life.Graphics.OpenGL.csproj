@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Life.Graphics.OpenGL</RootNamespace>
     <AssemblyName>Life.Graphics.OpenGL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="OpenTK">
+    <Reference Include="OpenTK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4">
       <HintPath>..\..\lib\opentk\OpenTK.dll</HintPath>
     </Reference>
   </ItemGroup>

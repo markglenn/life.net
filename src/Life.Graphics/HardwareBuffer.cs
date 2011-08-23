@@ -60,6 +60,9 @@ namespace Life.Graphics
 		protected abstract bool DoLock( BufferLock lockType );
 		protected abstract void DoUnlock( );
 		
+		public abstract void Write<T>( T val ) where T : struct;
+		public abstract void Write<T>( T[ ] vals ) where T : struct;
+		
 		#region implemented abstract members of Life.Core.ResourceBase
 		
 		protected override void Dispose( bool disposing )
