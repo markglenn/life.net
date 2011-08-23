@@ -30,6 +30,15 @@ namespace Life.Graphics.OpenGL
 			base.Dispose( disposing );
 		}
 		
+		protected override bool DoLock (BufferLock lockType)
+		{
+			throw new NotImplementedException ();
+		}
+		
+		protected override void DoUnlock ()
+		{
+			throw new NotImplementedException ();
+		}
 	}
 }
 

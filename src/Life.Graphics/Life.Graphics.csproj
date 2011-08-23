@@ -40,6 +40,8 @@
     <Compile Include="VertexElementType.cs" />
     <Compile Include="VertexElementFormat.cs" />
     <Compile Include="VertexDefinition.cs" />
+    <Compile Include="HardwareIndexBuffer.cs" />
+    <Compile Include="BufferLockScope.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

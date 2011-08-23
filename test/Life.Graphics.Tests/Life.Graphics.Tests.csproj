@@ -43,6 +43,7 @@
     <Compile Include="VertexElementTests.cs" />
     <Compile Include="VertexDefinitionTests.cs" />
     <Compile Include="HardwareVertexBufferTests.cs" />
+    <Compile Include="HardwareIndexBufferTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

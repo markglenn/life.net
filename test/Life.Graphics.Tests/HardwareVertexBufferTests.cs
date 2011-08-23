@@ -14,6 +14,16 @@ namespace Life.Graphics.Tests
 				: base( definition, numVertices )
 			{
 			}
+			
+			protected override bool DoLock (BufferLock lockType)
+			{
+				throw new NotImplementedException ();
+			}
+			
+			protected override void DoUnlock ()
+			{
+				throw new NotImplementedException ();
+			}
 		}
 		
 		[Test]
