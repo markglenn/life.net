@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 using FakeItEasy;
-using OpenTK.Graphics;
+using Life.Graphics;
 
 namespace Life.Graphics.Tests
 {
@@ -10,15 +10,16 @@ namespace Life.Graphics.Tests
 	{
 		class MockHardwareBuffer : HardwareBuffer
 		{
+			public override bool DoLoad( )
+			{
+				return false;
+			}
 			
-		}
-		
-		[Test]
-		public void Ctor_CreatesBuffer( )
-		{
-			GraphicsContext.CreateDummyContext( );
-			using( var buffer = new MockHardwareBuffer( ) )
-				Assert.AreNotEqual( 0, buffer.BufferID );
+			public override bool DoUnload( )
+			{
+				return false;
+			}
+
 		}
 	}
 }

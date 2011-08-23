@@ -10,7 +10,6 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Life.Core</RootNamespace>
     <AssemblyName>Life.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -49,6 +48,8 @@
     <Compile Include="IService.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IResource.cs" />
+    <Compile Include="ResourceBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

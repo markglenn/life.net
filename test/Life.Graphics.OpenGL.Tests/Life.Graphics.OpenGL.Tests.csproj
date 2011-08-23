@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}</ProjectGuid>
+    <ProjectGuid>{EF2F9B9E-3BAE-43C8-B19B-C68EC5FC70CD}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Life.Graphics</RootNamespace>
-    <AssemblyName>Life.Graphics</AssemblyName>
+    <RootNamespace>Life.Graphics.OpenGL.Tests</RootNamespace>
+    <AssemblyName>Life.Graphics.OpenGL.Tests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,20 +30,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="OpenTK">
+      <HintPath>..\..\lib\opentk\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\nunit\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="HardwareBuffer.cs" />
-    <Compile Include="HardwareVertexBuffer.cs" />
-    <Compile Include="VertexElement.cs" />
-    <Compile Include="VertexElementType.cs" />
-    <Compile Include="VertexElementFormat.cs" />
+    <Compile Include="OpenGLVertexBufferTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Life.Core\Life.Core.csproj">
-      <Project>{1B9D624C-9801-428A-A296-78C37676A707}</Project>
-      <Name>Life.Core</Name>
+    <ProjectReference Include="..\..\src\Life.Graphics.OpenGL\Life.Graphics.OpenGL.csproj">
+      <Project>{2AC35481-5012-4253-BE8F-A6F21A33EB4D}</Project>
+      <Name>Life.Graphics.OpenGL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life.Graphics\Life.Graphics.csproj">
+      <Project>{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}</Project>
+      <Name>Life.Graphics</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

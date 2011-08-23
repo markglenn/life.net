@@ -1,51 +1,25 @@
 using System;
-using OpenTK.Graphics.OpenGL;
+using Life.Core;
 
 namespace Life.Graphics
 {
 	/// <summary>
 	/// OpenGL buffer with ability to be stored on the GPU
 	/// </summary>
-	public abstract class HardwareBuffer : IDisposable
+	public abstract class HardwareBuffer : ResourceBase
 	{
-		#region [ Private Members ]
-		
-		private uint[] bufferID = new uint[ 1 ];
-		
-		#endregion
-		
-		/// <summary>
-		/// OpenGL buffer ID
-		/// </summary>
-		public uint BufferID
-		{
-			get { return this.bufferID[0]; }
-			protected set { this.bufferID[0] = value; }
-		}
-			
 		protected HardwareBuffer ()
 		{
-			GL.GenBuffers( 1, this.bufferID );
 		}
 
-		~HardwareBuffer( )
-		{
-			Dispose( false );
-		}
-	
-		#region [ IDisposable implementation ]
+		#region implemented abstract members of Life.Core.ResourceBase
 		
-		public void Dispose ()
+		protected override void Dispose( bool disposing )
 		{
-			Dispose( true );		
-			GC.SuppressFinalize( this );
+			if ( disposing && State == ResourceState.Loaded )
+				Unload( );
 		}
-		
-		protected virtual void Dispose( bool disposing )
-		{
-			GL.DeleteBuffers( 1, this.bufferID );
-		}
-		
+
 		#endregion
 	}
 }
