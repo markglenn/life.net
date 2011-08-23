@@ -36,11 +36,13 @@
     <Reference Include="FakeItEasy">
       <HintPath>..\..\lib\FakeItEasy.dll</HintPath>
     </Reference>
+    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="HardwareBufferTests.cs" />
     <Compile Include="VertexElementTests.cs" />
+    <Compile Include="VertexDefinitionTests.cs" />
+    <Compile Include="HardwareVertexBufferTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

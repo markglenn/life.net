@@ -16,7 +16,8 @@ namespace Life.Graphics.OpenGL
 			get { return this.vboId; }
 		}
 		
-		public OpenGLVertexBuffer( )
+		public OpenGLVertexBuffer( VertexDefinition vertexDefinition, uint numVertices )
+			: base( vertexDefinition, numVertices )
 		{
 			GL.GenBuffers( 1, out vboId );
 		}

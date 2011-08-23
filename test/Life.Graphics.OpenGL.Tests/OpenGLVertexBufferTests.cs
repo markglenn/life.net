@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 using OpenTK.Graphics;
 using OpenTK;
+using FakeItEasy;
 
 namespace Life.Graphics.OpenGL.Tests
 {
@@ -25,10 +26,8 @@ namespace Life.Graphics.OpenGL.Tests
 		[Test]
 		public void Ctor_CreatesBuffer( )
 		{
-			using( var buffer = new OpenGLVertexBuffer( ) )
-			{
+			using( var buffer = new OpenGLVertexBuffer( A.Dummy<VertexDefinition>( ), 1 ) )
 				Assert.AreNotEqual( 0, buffer.BufferID );
-			}
 		}
 	}
 }
