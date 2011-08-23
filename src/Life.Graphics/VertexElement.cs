@@ -6,7 +6,8 @@ namespace Life.Graphics
 	{
 		#region [ Private Members ]
 		
-		private readonly uint size;
+		private readonly int size;
+		private readonly int count;
 		private readonly VertexElementType type;
 		private readonly VertexElementFormat format;
 		
@@ -14,7 +15,12 @@ namespace Life.Graphics
 		
 		#region [ Public Properties ]
 		
-		public uint Size
+		public int Count
+		{
+			get { return this.count; }
+		}
+		
+		public int Size
 		{
 			get { return this.size; }
 		}
@@ -29,18 +35,19 @@ namespace Life.Graphics
 			get { return this.format; }
 		}
 		
-		public uint Offset 
+		public int Offset 
 		{
 			get; internal set; 
 		}
 		
 		#endregion
 		
-		public VertexElement( VertexElementType type, VertexElementFormat format, uint count )
+		public VertexElement( VertexElementType type, VertexElementFormat format, int count )
 		{
 			this.type = type;
 			this.format = format;
 			this.size = SizeOfElement( format, count );
+			this.count = count;
 		}
 
 		#region [ IComparable[VertexElement] implementation ]
@@ -52,7 +59,7 @@ namespace Life.Graphics
 		
 		#endregion
 		
-		private static uint SizeOfElement( VertexElementFormat format, uint count )
+		private static int SizeOfElement( VertexElementFormat format, int count )
 		{
 			switch( format )
 			{

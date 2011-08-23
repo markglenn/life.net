@@ -10,7 +10,7 @@ namespace Life.Graphics.Tests
 	{
 		class MockHardwareBuffer : HardwareVertexBuffer
 		{
-			public MockHardwareBuffer( VertexDefinition definition, uint numVertices )
+			public MockHardwareBuffer( VertexDefinition definition, int numVertices )
 				: base( definition, numVertices )
 			{
 			}

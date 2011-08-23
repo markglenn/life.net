@@ -7,18 +7,18 @@ namespace Life.Graphics
         #region [ Private Members ]
 
         private readonly VertexDefinition vertexDefinition;
-        private readonly uint numVertices;
+        private readonly int numVertices;
 
         #endregion [ Private Members ]
 
         #region [ Public Properties ]
 
-        public uint NumVertices
+        public int NumVertices
         {
             get { return this.numVertices; }
         }
 
-        public uint Stride
+        public int Stride
         {
             get { return this.vertexDefinition.Stride; }
         }
@@ -30,7 +30,7 @@ namespace Life.Graphics
 
         #endregion [ Public Properties ]
 
-        protected HardwareVertexBuffer( VertexDefinition vertexDefinition, uint numVertices )
+        protected HardwareVertexBuffer( VertexDefinition vertexDefinition, int numVertices )
         {
             this.vertexDefinition = vertexDefinition;
             this.numVertices = numVertices;

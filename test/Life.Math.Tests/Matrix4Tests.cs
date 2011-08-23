@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Life.Math.Tests
 {
     [TestFixture]
-    class Matrix4Tests
+    public class Matrix4Tests
     {
         private float[ ] values;
 

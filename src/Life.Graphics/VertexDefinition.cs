@@ -23,7 +23,7 @@ namespace Life.Graphics
         /// <summary>
         /// Size of the vertex
         /// </summary>
-        public uint Stride { get; private set; }
+        public int Stride { get; private set; }
         
 		#endregion
 
@@ -55,7 +55,7 @@ namespace Life.Graphics
         public void Sort( )
         {
             this.elements.Sort( );
-            uint offset = 0;
+            int offset = 0;
 
             foreach ( var element in this.elements )
             {

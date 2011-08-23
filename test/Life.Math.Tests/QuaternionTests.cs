@@ -50,7 +50,8 @@ namespace Life.Math.Tests
             var quaternion = new Quaternion( 1, 2, 3, 4 );
 
             Assert.That( quaternion.LengthSquared( ) != 1 );
-            Assert.That( quaternion.Normalized( ).LengthSquared( ) == 1 );
+            var delta = System.Math.Abs( 1.0f - quaternion.Normalized( ).LengthSquared( ) );
+            Assert.That( delta < 0.01f );
         }
 
         #region Equals Tests
