@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Life;
+using Life.Platform;
 
-namespace Life.Platform
+namespace Life.Graphics
 {
 	public interface IDevice : IService
 	{

@@ -43,15 +43,10 @@
     <Compile Include="AdapterCapabilities.cs" />
     <Compile Include="DisplayCapabilities.cs" />
     <Compile Include="DisplayResolution.cs" />
-    <Compile Include="IDevice.cs" />
     <Compile Include="RenderWindowService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Life.Graphics\Life.Graphics.csproj">
-      <Project>{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}</Project>
-      <Name>Life.Graphics</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Life.Math\Life.Math.csproj">
       <Project>{10BD7757-CCD5-4804-B87F-086BCDE024CD}</Project>
       <Name>Life.Math</Name>
