@@ -45,6 +45,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\opentk\OpenTK.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archive\FolderArchive.cs" />
@@ -56,6 +57,8 @@
     <Compile Include="IResource.cs" />
     <Compile Include="ResourceBase.cs" />
     <Compile Include="Platform\RenderWindowService.cs" />
+    <Compile Include="Platform\DisplayResolution.cs" />
+    <Compile Include="Platform\DisplayCapabilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
