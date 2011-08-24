@@ -1,21 +1,21 @@
 using System;
 using Life.Math;
 using OpenTK;
-using Matrix4 = Life.Math.Matrix4;
+using OpenTK.Platform;
 
 namespace Life.Core
 {
-	public class RenderWindow : IService
+	public class RenderWindowService : IService
     {
         #region [ Private Members ]
 
-        private readonly GameWindow window;
+        private readonly IGameWindow window;
 
         #endregion [ Private Members ]
 
         #region [ Public Properties ]
 
-        public delegate void OnCloseDelegate( RenderWindow window );
+        public delegate void OnCloseDelegate( RenderWindowService window );
         public delegate void OnResizeDelegate( int width, int height );
 
         public event OnCloseDelegate OnClose;
@@ -31,11 +31,16 @@ namespace Life.Core
             get { return this.window.Height; }
         }
        
+       	public IGameWindow Window
+		{
+			get { return this.window; }
+		}
+		
         #endregion [ Public Properties ]
 
-        public RenderWindow( int width, int height )
+        public RenderWindowService( IGameWindow window )
         {
-        	this.window = new GameWindow( width, height );
+        	this.window = window;
         }
 
         #region [ IService Implementation ]
@@ -92,7 +97,7 @@ namespace Life.Core
         
 		#region [ IDisposable Implementation ]
 		
-		~RenderWindow( )
+		~RenderWindowService( )
 		{
 			Dispose( false );
 		}
@@ -106,10 +111,10 @@ namespace Life.Core
 		protected virtual void Dispose( bool disposing )
 		{
 			if ( disposing )
-				window.Close( );
+				window.Dispose( );
 		}
 		
-		#endregion [ IDisposable Implementation ]
+		#endregion
     }
 		
 }

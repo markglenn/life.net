@@ -55,7 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IResource.cs" />
     <Compile Include="ResourceBase.cs" />
-    <Compile Include="Platform\RenderWindow.cs" />
+    <Compile Include="Platform\RenderWindowService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
