@@ -1,5 +1,5 @@
 using System;
-using Life.Core;
+using Life;
 
 namespace Life.Graphics
 {
@@ -63,7 +63,7 @@ namespace Life.Graphics
 		public abstract void Write<T>( T val ) where T : struct;
 		public abstract void Write<T>( T[ ] vals ) where T : struct;
 		
-		#region implemented abstract members of Life.Core.ResourceBase
+		#region implemented abstract members of Life.ResourceBase
 		
 		protected override void Dispose( bool disposing )
 		{

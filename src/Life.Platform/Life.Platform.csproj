@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}</ProjectGuid>
+    <ProjectGuid>{247A604B-EF48-4F4D-8CBD-E143B001570A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Life.Graphics</RootNamespace>
-    <AssemblyName>Life.Graphics</AssemblyName>
+    <RootNamespace>Life.Platform</RootNamespace>
+    <AssemblyName>Life.Platform</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,21 +31,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="OpenTK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\opentk\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="HardwareBuffer.cs" />
-    <Compile Include="HardwareVertexBuffer.cs" />
-    <Compile Include="VertexElement.cs" />
-    <Compile Include="VertexElementType.cs" />
-    <Compile Include="VertexElementFormat.cs" />
-    <Compile Include="VertexDefinition.cs" />
-    <Compile Include="HardwareIndexBuffer.cs" />
-    <Compile Include="BufferLockScope.cs" />
+    <Compile Include="AdapterCapabilities.cs" />
+    <Compile Include="DisplayCapabilities.cs" />
+    <Compile Include="DisplayResolution.cs" />
+    <Compile Include="IDevice.cs" />
+    <Compile Include="RenderWindowService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\Life.Graphics\Life.Graphics.csproj">
+      <Project>{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}</Project>
+      <Name>Life.Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Life.Math\Life.Math.csproj">
+      <Project>{10BD7757-CCD5-4804-B87F-086BCDE024CD}</Project>
+      <Name>Life.Math</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Life\Life.csproj">
       <Project>{1B9D624C-9801-428A-A296-78C37676A707}</Project>
       <Name>Life</Name>
