@@ -67,6 +67,7 @@
     <Compile Include="Platform\RenderWindowServiceTests.cs" />
     <Compile Include="Platform\DisplayResolutionTests.cs" />
     <Compile Include="Platform\DisplayCapabilitiesTests.cs" />
+    <Compile Include="Platform\AdapterCapabilitiesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

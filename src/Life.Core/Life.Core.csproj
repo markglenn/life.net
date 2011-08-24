@@ -59,6 +59,7 @@
     <Compile Include="Platform\RenderWindowService.cs" />
     <Compile Include="Platform\DisplayResolution.cs" />
     <Compile Include="Platform\DisplayCapabilities.cs" />
+    <Compile Include="Platform\AdapterCapabilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
