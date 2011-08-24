@@ -41,6 +41,10 @@
     <Reference Include="System.Reactive, Version=1.1.10425.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\..\packages\Rx-Main.1.1.10425\lib\Net4\System.Reactive.dll</HintPath>
     </Reference>
+    <Reference Include="OpenTK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\opentk\OpenTK.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archive\FolderArchive.cs" />
@@ -51,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IResource.cs" />
     <Compile Include="ResourceBase.cs" />
+    <Compile Include="Platform\RenderWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,4 +68,13 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Platform\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Life.Math\Life.Math.csproj">
+      <Project>{10BD7757-CCD5-4804-B87F-086BCDE024CD}</Project>
+      <Name>Life.Math</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
