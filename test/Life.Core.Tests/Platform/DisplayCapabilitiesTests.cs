@@ -4,7 +4,7 @@ using NUnit.Framework;
 using FakeItEasy;
 using System.Drawing;
 
-namespace Life.Core.Tests
+namespace Life.Core.Platform.Tests
 {
 	[TestFixture]
 	public class DisplayCapabilitiesTests

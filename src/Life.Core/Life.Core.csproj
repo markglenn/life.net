@@ -60,6 +60,7 @@
     <Compile Include="Platform\DisplayResolution.cs" />
     <Compile Include="Platform\DisplayCapabilities.cs" />
     <Compile Include="Platform\AdapterCapabilities.cs" />
+    <Compile Include="Platform\IDevice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

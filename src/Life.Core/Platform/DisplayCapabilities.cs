@@ -3,7 +3,7 @@ using System.Linq;
 using System.Drawing;
 using System.Collections.Generic;
 
-namespace Life.Core
+namespace Life.Core.Platform
 {
 	public class DisplayCapabilities
     {

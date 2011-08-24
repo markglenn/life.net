@@ -3,7 +3,7 @@ using Life.Math;
 using OpenTK;
 using OpenTK.Platform;
 
-namespace Life.Core
+namespace Life.Core.Platform
 {
 	public class RenderWindowService : IService
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 
-namespace Life.Core
+namespace Life.Core.Platform
 {
 	public class DisplayResolution
     {

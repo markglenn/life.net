@@ -3,7 +3,7 @@ using NUnit.Framework;
 using FakeItEasy;
 using OpenTK.Platform;
 
-namespace Life.Core.Tests
+namespace Life.Core.Platform.Tests
 {
 	[TestFixture]
 	public class RenderWindowServiceTests

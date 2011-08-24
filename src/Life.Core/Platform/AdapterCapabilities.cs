@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Life.Core
+namespace Life.Core.Platform
 {
     public class AdapterCapabilities
     {

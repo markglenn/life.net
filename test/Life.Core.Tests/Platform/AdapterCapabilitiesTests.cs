@@ -4,7 +4,7 @@ using System.Linq;
 using NUnit.Framework;
 using FakeItEasy;
 
-namespace Life.Core.Tests
+namespace Life.Core.Platform.Tests
 {
 	[TestFixture]
 	public class AdapterCapabilitiesTests
