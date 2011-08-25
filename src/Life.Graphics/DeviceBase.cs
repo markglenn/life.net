@@ -31,9 +31,9 @@ namespace Life.Graphics
 
 		#region [ IService implementation ]
 		
-		public abstract void Start( );
+		public abstract void Start( Kernel kernel );
 
-		public abstract void Stop( );
+		public abstract void Stop( Kernel kernel );
 
 		public abstract void Update( GameTime gameTime );
 
@@ -41,7 +41,10 @@ namespace Life.Graphics
 
 		public virtual ServiceStatus Status { get; protected set; }
 
-		public virtual uint Priority { get; protected set; }
+		public virtual uint Priority
+		{ 
+			get { return 10000; }
+		}
 		
 		#endregion
 

@@ -49,7 +49,7 @@ namespace Life.Tests
             var fake = A.Fake<IService>( );
 
             this.kernel.AddService( fake );
-            fake.Configure( ).CallsTo( m => m.Start( ) ).MustHaveHappened( );
+            fake.Configure( ).CallsTo( m => m.Start( this.kernel ) ).MustHaveHappened( );
         }
 
         private static IService CreateFakeService( uint priority )

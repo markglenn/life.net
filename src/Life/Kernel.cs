@@ -30,7 +30,7 @@ namespace Life
 
         public bool AddService( IService service )
         {
-            service.Start( );
+            service.Start( this );
 
             lock ( this.services )
             {

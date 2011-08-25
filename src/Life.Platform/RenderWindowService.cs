@@ -51,7 +51,7 @@ namespace Life.Platform
 			get { return @"Render Window Service"; }
 		}
 
-        public void Start( )
+        public void Start( Kernel kernel )
         {
             // Setup the events to handle
             this.window.Closing += ( sender, e ) =>
@@ -67,7 +67,7 @@ namespace Life.Platform
             this.Status = ServiceStatus.Alive;
         }
 
-        public void Stop( )
+        public void Stop( Kernel kernel )
         {
             this.window.Close( );
         }

@@ -17,6 +17,7 @@ namespace Life.Graphics.OpenGL.Tests
 			Assert.AreNotEqual( 0, adapters.Count( ) );
 			Assert.AreNotEqual( 0, adapters.First( ).Displays.Count( ) );
 		}
+
 	}
 }
 

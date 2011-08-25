@@ -27,12 +27,12 @@ namespace Life
         /// <summary>
         /// Runs the startup of the service
         /// </summary>
-        void Start( );
+        void Start( Kernel kernel );
 
         /// <summary>
         /// Stops a service
         /// </summary>
-        void Stop( );
+        void Stop( Kernel kernel );
 
         /// <summary>
         /// Priority of the service

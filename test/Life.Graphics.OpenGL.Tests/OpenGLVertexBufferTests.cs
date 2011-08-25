@@ -36,7 +36,7 @@ namespace Life.Graphics.OpenGL.Tests
 		public void Ctor_CreatesBuffer( )
 		{
 			using( var buffer = new OpenGLVertexBuffer( A.Dummy<VertexDefinition>( ), BufferUsage.Static, 1 ) )
-				Assert.AreNotEqual( 0, buffer.BufferID );
+				Assert.AreNotEqual( 0, buffer.BufferId );
 		}
 		
 		[Test]

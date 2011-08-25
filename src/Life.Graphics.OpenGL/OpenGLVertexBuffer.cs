@@ -62,7 +62,7 @@ namespace Life.Graphics.OpenGL
 
 		#endregion
 		
-		public uint BufferID
+		public uint BufferId
 		{
 			get { return this.vboId; }
 		}

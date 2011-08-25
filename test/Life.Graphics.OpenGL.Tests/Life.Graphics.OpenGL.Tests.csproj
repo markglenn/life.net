@@ -46,6 +46,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="OpenGLVertexBufferTests.cs" />
     <Compile Include="OpenGLDeviceTests.cs" />
+    <Compile Include="OpenGLIndexBufferTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -60,6 +61,10 @@
     <ProjectReference Include="..\..\src\Life.Platform\Life.Platform.csproj">
       <Project>{247A604B-EF48-4F4D-8CBD-E143B001570A}</Project>
       <Name>Life.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life\Life.csproj">
+      <Project>{1B9D624C-9801-428A-A296-78C37676A707}</Project>
+      <Name>Life</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

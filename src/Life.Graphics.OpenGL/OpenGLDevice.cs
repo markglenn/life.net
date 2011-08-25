@@ -30,19 +30,17 @@ namespace Life.Graphics.OpenGL
 
 		#region [ IService implementation ]
 		
-		public override void Start ()
+		public override void Start( Kernel kernel )
 		{
-			throw new NotImplementedException ();
 		}
 
-		public override void Stop ()
+		public override void Stop( Kernel kernel )
 		{
-			throw new NotImplementedException ();
 		}
 
 		public override void Update (GameTime gameTime)
 		{
-			throw new NotImplementedException ();
+			this.WindowService.Window.SwapBuffers( );
 		}
 
 		public override string Name 
@@ -50,14 +48,6 @@ namespace Life.Graphics.OpenGL
 			get { return "OpenGL Device Service"; }
 		}
 
-		#endregion
-
-		#region [ IDisposable implementation ]
-		
-		public void Dispose ()
-		{
-			throw new NotImplementedException ();
-		}
 		#endregion
 		
 		#region [ Private Methods ]

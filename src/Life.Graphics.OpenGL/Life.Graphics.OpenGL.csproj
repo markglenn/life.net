@@ -41,6 +41,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="OpenGLVertexBuffer.cs" />
     <Compile Include="OpenGLDevice.cs" />
+    <Compile Include="OpenGLIndexBuffer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
