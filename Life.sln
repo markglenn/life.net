@@ -85,7 +85,7 @@ Global
 		{54C4805C-6C32-4CDA-9B6B-6A51F08882AA} = {E5615BC7-82B8-44A5-8E27-1AC32D501670}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = src\Life.Math\Life.Math.csproj
+		StartupItem = test\Life.Graphics.OpenGL.Tests\Life.Graphics.OpenGL.Tests.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
