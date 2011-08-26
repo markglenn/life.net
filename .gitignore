@@ -7,3 +7,4 @@ test-results
 */**/obj
 _ReSharper*
 *.userprefs
+TestResult.xml
