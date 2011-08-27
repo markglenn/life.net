@@ -49,7 +49,30 @@ namespace Life
 
                 return true;
             }
-
         }
+        
+		public void Run( )
+		{
+			var time = new GameTime( );
+			
+			while( services.Any( ) )
+			{
+				var current = this.services.First;
+				
+				while( current != null )
+				{
+					var next = current.Next;
+					
+					if ( current.Value.Status == ServiceStatus.Alive )
+						current.Value.Update( time );
+					
+					if ( current.Value.Status == ServiceStatus.Dead )
+						this.services.Remove( current );
+						
+					current = next;
+				}
+			}
+			
+		}
     }
 }

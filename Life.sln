@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Tests", "test\Life.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Input.Sdl.Tests", "test\Life.Input.Sdl.Tests\Life.Input.Sdl.Tests.csproj", "{E0325E34-004F-4EBF-A955-0A86ADE800BB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{9F7C6114-42BE-4926-BECD-3EB994609424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpinningCube", "examples\SpinningCube\SpinningCube.csproj", "{77117D8D-1966-4314-B92C-AB41A65ADCDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,10 @@ Global
 		{5F507673-D89B-4498-A247-4D0C01CA2E3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F507673-D89B-4498-A247-4D0C01CA2E3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F507673-D89B-4498-A247-4D0C01CA2E3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77117D8D-1966-4314-B92C-AB41A65ADCDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77117D8D-1966-4314-B92C-AB41A65ADCDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77117D8D-1966-4314-B92C-AB41A65ADCDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77117D8D-1966-4314-B92C-AB41A65ADCDD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E0325E34-004F-4EBF-A955-0A86ADE800BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E0325E34-004F-4EBF-A955-0A86ADE800BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0325E34-004F-4EBF-A955-0A86ADE800BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -104,9 +112,10 @@ Global
 		{05CE5DA4-393F-42D7-81C4-D11DE2C1B26A} = {E5615BC7-82B8-44A5-8E27-1AC32D501670}
 		{54C4805C-6C32-4CDA-9B6B-6A51F08882AA} = {E5615BC7-82B8-44A5-8E27-1AC32D501670}
 		{E0325E34-004F-4EBF-A955-0A86ADE800BB} = {E5615BC7-82B8-44A5-8E27-1AC32D501670}
+		{77117D8D-1966-4314-B92C-AB41A65ADCDD} = {9F7C6114-42BE-4926-BECD-3EB994609424}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = test\Life.Graphics.OpenGL.Tests\Life.Graphics.OpenGL.Tests.csproj
+		StartupItem = examples\SpinningCube\SpinningCube.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

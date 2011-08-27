@@ -52,12 +52,28 @@ namespace Life.Tests
             fake.Configure( ).CallsTo( m => m.Start( this.kernel ) ).MustHaveHappened( );
         }
 
+		[Test]
+		public void Run_ExitsWithNoServices( )
+		{
+			this.kernel.Run( );
+		}
+		
+		[Test]
+		public void Run_ExitsWithDeadService( )
+		{
+			var service = CreateFakeService( 100 );
+			this.kernel.AddService( service );
+			A.CallTo( ( ) => service.Status ).Returns( ServiceStatus.Dead );
+			
+			this.kernel.Run( );
+		}
+		
         private static IService CreateFakeService( uint priority )
         {
             var fake = A.Fake<IService>( );
-
-            fake.Configure( ).CallsTo( m => m.Priority ).Returns( priority );
-            fake.Configure( ).CallsTo( m => m.Status ).Returns( ServiceStatus.Alive );
+            
+			A.CallTo( ( ) => fake.Priority ).Returns( priority );
+			A.CallTo( ( ) => fake.Status ).Returns( ServiceStatus.Alive );
 
             return fake;
         }
