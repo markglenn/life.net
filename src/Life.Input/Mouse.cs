@@ -19,7 +19,7 @@ namespace Life.Input
 		#region [ Private Members ]
 		
         private Vector3 relativeChange;
-        private bool[ ] buttonPresses;
+        private bool[ ] buttonPresses = new bool[ 3 ];
         private readonly Subject<Vector3> mouseMovements = new Subject<Vector3>( );
         private readonly Subject<MouseButton> mouseDowns = new Subject<MouseButton>( );
         private readonly Subject<MouseButton> mouseUps = new Subject<MouseButton>( );
@@ -27,26 +27,6 @@ namespace Life.Input
 		#endregion
 
         #region [ Public Properties ]
-
-        /// <summary>
-        /// Button presses 
-        /// </summary>
-        public bool[ ] ButtonPresses
-        {
-            get { return this.buttonPresses; }
-            set
-            {
-                var oldButtons = this.buttonPresses ?? new bool[value.Length];
-                this.buttonPresses = value;
-
-                for ( int i = 0; i < value.Length; ++i )
-                {
-                    if ( oldButtons[ i ] != value[ i ] )
-                        this.InvokeMouseButtonChanged( value[ i ], i );
-                }
-
-            }
-        }
 
         /// <summary>
         /// Relative change in the mouse position
@@ -80,27 +60,24 @@ namespace Life.Input
         
         #endregion
 
-        protected Mouse( )
-        {
-        }
-
-        protected abstract bool Capture( );
-
         #region [ Implementation of IService ]
 
-        public abstract void Start( Kernel kernel );
+        public virtual void Start( Kernel kernel )
+		{
+			this.Status = Life.ServiceStatus.Alive;
+		}
 
-        public abstract void Stop( Kernel kernel );
+        public virtual void Stop( Kernel kernel )
+		{
+			this.Status = Life.ServiceStatus.Dead;
+		}
 
         public uint Priority
         {
             get { return 100; }
         }
 
-        public void Update( GameTime gameTime )
-        {
-            this.Capture( );
-        }
+        public abstract void Update( GameTime gameTime );
 
 		public abstract string Name { get; }
 
@@ -121,9 +98,20 @@ namespace Life.Input
             GC.SuppressFinalize( this );
         }
 
-        protected abstract void Dispose( bool disposing );
+        protected virtual void Dispose( bool disposing )
+		{
+		}
 
         #endregion [ Implementation of IDisposable ]
+        
+		public void SetMouseButtonState( MouseButton button, bool isPressed )
+		{
+			if ( this.buttonPresses[ ( int )button ] != isPressed )
+			{
+				this.buttonPresses[ ( int )button ] = isPressed;
+				this.InvokeMouseButtonChanged( isPressed, ( int )button );
+			}
+		}
 
         #region [ Private Methods ]
 

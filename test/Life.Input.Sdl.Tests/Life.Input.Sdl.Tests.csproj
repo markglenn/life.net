@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4E8CA88F-7381-414F-A948-10188AD84399}</ProjectGuid>
+    <ProjectGuid>{E0325E34-004F-4EBF-A955-0A86ADE800BB}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Life.Input</RootNamespace>
-    <AssemblyName>Life.Input</AssemblyName>
+    <RootNamespace>Life.Input.Sdl.Tests</RootNamespace>
+    <AssemblyName>Life.Input.Sdl.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,25 +31,39 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="nunit.framework, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\nunit\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System.Reactive, Version=1.1.10425.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Rx-Main.1.1.10425\lib\Net4\System.Reactive.dll</HintPath>
     </Reference>
+    <Reference Include="FakeItEasy, Version=1.6.4075.221, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\FakeItEasy.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Mouse.cs" />
-    <Compile Include="Keyboard.cs" />
-    <Compile Include="KeyCode.cs" />
-    <Compile Include="InputManager.cs" />
+    <Compile Include="SdlMouseTests.cs" />
+    <Compile Include="SdlInputManagerTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Life.Math\Life.Math.csproj">
+    <ProjectReference Include="..\..\src\Life.Input.Sdl\Life.Input.Sdl.csproj">
+      <Project>{5F507673-D89B-4498-A247-4D0C01CA2E3F}</Project>
+      <Name>Life.Input.Sdl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life.Input\Life.Input.csproj">
+      <Project>{4E8CA88F-7381-414F-A948-10188AD84399}</Project>
+      <Name>Life.Input</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life.Math\Life.Math.csproj">
       <Project>{10BD7757-CCD5-4804-B87F-086BCDE024CD}</Project>
       <Name>Life.Math</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Life\Life.csproj">
+    <ProjectReference Include="..\..\src\Life\Life.csproj">
       <Project>{1B9D624C-9801-428A-A296-78C37676A707}</Project>
       <Name>Life</Name>
     </ProjectReference>
