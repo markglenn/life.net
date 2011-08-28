@@ -27,6 +27,8 @@ namespace Life.Graphics
 			get { return this.windowService; }
 		}
 		
+		public abstract void Render( RenderOperation operation );
+		
 		public abstract HardwareVertexBuffer CreateVertexBuffer( VertexDefinition vertexDefinition, int numVertices );
 		
 		public abstract HardwareIndexBuffer CreateIndexBuffer( IndexBufferFormat format, int numIndices );

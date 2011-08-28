@@ -30,6 +30,30 @@ namespace Life.Graphics.OpenGL
 				) };
 		}
 		
+		public override void Render( RenderOperation operation )
+		{
+			var vertexBuffer = (OpenGLVertexBuffer )operation.VertexBuffer;
+			var indexBuffer = (OpenGLIndexBuffer )operation.IndexBuffer;
+			
+			if ( vertexBuffer == null )
+				throw new ArgumentException( "Render operation requires vertex buffer" );
+				
+			GL.BindBuffer( BufferTarget.ArrayBuffer, vertexBuffer.BufferId );
+			vertexBuffer.EnableVertexDefinition( );
+			
+			if ( indexBuffer != null )
+			{
+				GL.BindBuffer( BufferTarget.ElementArrayBuffer, indexBuffer.BufferId );
+				GL.DrawElements( GetMode( operation.OperationType ), operation.PrimitiveCount,
+					GetIndexBufferType( indexBuffer.Format ), 0 );
+			}
+			else
+			{
+				GL.BindBuffer( BufferTarget.ElementArrayBuffer, 0 );
+				GL.DrawArrays( GetMode( operation.OperationType ), 0, operation.PrimitiveCount );
+			}
+		}
+		
 		public override HardwareVertexBuffer CreateVertexBuffer( VertexDefinition vertexDefinition, int numVertices )
 		{
 			return new OpenGLVertexBuffer( vertexDefinition, BufferUsage.Static, numVertices );
@@ -79,6 +103,53 @@ namespace Life.Graphics.OpenGL
 			return new DisplayCapabilities( 
 				display.IsPrimary, display.Bounds, ( int )display.RefreshRate, display.BitsPerPixel, 
 				display.AvailableResolutions.Select( r => GetResolution( r ) ).ToArray( ) );
+		}
+		
+		private static BeginMode GetMode( OperationType operationType )
+		{
+			switch( operationType )
+			{
+			case OperationType.LineList:
+				return BeginMode.Lines;
+				
+			case OperationType.LineStrip:
+				return BeginMode.LineStrip;
+				
+			case OperationType.PointList:
+				return BeginMode.Points;
+				
+			case OperationType.TriangleFan:
+				return BeginMode.TriangleFan;
+				
+			case OperationType.TriangleList:
+				return BeginMode.Triangles;
+				
+			case OperationType.TriangleStrip:
+				return BeginMode.TriangleStrip;
+				
+			default:
+				throw new InvalidOperationException( "Unknown mode" );
+		
+			}
+		}
+		
+		private static DrawElementsType GetIndexBufferType( IndexBufferFormat format )
+		{
+			switch( format )
+			{
+			case IndexBufferFormat.UByte:
+				return DrawElementsType.UnsignedByte;
+				
+			case IndexBufferFormat.UShort:
+				return DrawElementsType.UnsignedShort;
+				
+			case IndexBufferFormat.UInt:
+				return DrawElementsType.UnsignedInt;
+				
+			default:
+				throw new InvalidOperationException( "Unknown index buffer type" );
+				
+			}
 		}
 		
 		#endregion
