@@ -6,6 +6,7 @@ using OpenTK;
 using LifeDisplayResolution = Life.Platform.DisplayResolution;
 using OpenTKDisplayResolution = OpenTK.DisplayResolution;
 using System.Drawing;
+using OpenTK.Graphics.OpenGL;
 
 namespace Life.Graphics.OpenGL
 {
@@ -14,6 +15,9 @@ namespace Life.Graphics.OpenGL
 		public OpenGLDevice( RenderWindowService window )
 			: base( window )
 		{
+			window.OnClose += _ => {
+				this.Status = ServiceStatus.Dead;
+			};
 		}
 
 		#region [ IDevice implementation ]
@@ -25,13 +29,24 @@ namespace Life.Graphics.OpenGL
 					DisplayDevice.AvailableDisplays.Select( d => GetDisplayCapabilities( d ) ) 
 				) };
 		}
-
+		
+		public override HardwareVertexBuffer CreateVertexBuffer( VertexDefinition vertexDefinition, int numVertices )
+		{
+			return new OpenGLVertexBuffer( vertexDefinition, BufferUsage.Static, numVertices );
+		}
+		
+		public override HardwareIndexBuffer CreateIndexBuffer( IndexBufferFormat format, int numIndices )
+		{
+			return new OpenGLIndexBuffer( format, BufferUsage.Static, numIndices );
+		}
+		
 		#endregion
 
 		#region [ IService implementation ]
 		
 		public override void Start( Kernel kernel )
 		{
+			GL.ClearColor( Color.Black );
 		}
 
 		public override void Stop( Kernel kernel )
@@ -41,6 +56,7 @@ namespace Life.Graphics.OpenGL
 		public override void Update (GameTime gameTime)
 		{
 			this.WindowService.Window.SwapBuffers( );
+			GL.Clear( ClearBufferMask.ColorBufferBit );
 		}
 
 		public override string Name 

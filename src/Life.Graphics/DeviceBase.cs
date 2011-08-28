@@ -27,6 +27,10 @@ namespace Life.Graphics
 			get { return this.windowService; }
 		}
 		
+		public abstract HardwareVertexBuffer CreateVertexBuffer( VertexDefinition vertexDefinition, int numVertices );
+		
+		public abstract HardwareIndexBuffer CreateIndexBuffer( IndexBufferFormat format, int numIndices );
+		
 		#endregion
 
 		#region [ IService implementation ]

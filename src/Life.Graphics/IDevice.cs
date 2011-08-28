@@ -17,6 +17,10 @@ namespace Life.Graphics
 		/// </summary>
 		RenderWindowService WindowService { get; }
 		
+		HardwareVertexBuffer CreateVertexBuffer( VertexDefinition vertexDefinition, int numVertices );
+		
+		HardwareIndexBuffer CreateIndexBuffer( IndexBufferFormat format, int numIndices );
+		
 	}
 }
 

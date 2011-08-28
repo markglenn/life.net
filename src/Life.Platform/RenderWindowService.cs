@@ -42,6 +42,7 @@ namespace Life.Platform
         public RenderWindowService( IGameWindow window )
         {
         	this.window = window;
+        	this.window.Visible = true;
         }
 
         #region [ IService Implementation ]
@@ -63,7 +64,13 @@ namespace Life.Platform
                 this.Status = ServiceStatus.Dead;
             };
 
-            this.window.Resize += ( sender, e ) => this.OnResize( this.window.Width, this.window.Height );
+            this.window.Resize += ( sender, e ) => {
+				var handler = this.OnResize;
+				
+				if ( handler != null )
+					handler( this.window.Width, this.window.Height );
+			};
+			
             this.Status = ServiceStatus.Alive;
         }
 
