@@ -1,14 +1,14 @@
 <NUnitProject>
   <Settings activeconfig="Debug"/>
   <Config name="Debug">
-    <assembly path="test/Life.Core.Tests/bin/Debug/Life.Core.Tests.dll"/>
+    <assembly path="test/Life.Tests/bin/Debug/Life.Tests.dll"/>
     <assembly path="test/Life.Graphics.Tests/bin/Debug/Life.Graphics.Tests.dll"/>
     <assembly path="test/Life.Math.Tests/bin/Debug/Life.Math.Tests.dll"/>
     <assembly path="test/Life.Platform.Tests/bin/Debug/Life.Platform.Tests.dll"/>
     <assembly path="test/Life.Graphics.OpenGL.Tests/bin/Debug/Life.Graphics.OpenGL.Tests.dll"/>
   </Config>
   <Config name="Release">
-    <assembly path="test/Life.Core.Tests/bin/Release/Life.Core.Tests.dll"/>
+    <assembly path="test/Life.Tests/bin/Release/Life.Tests.dll"/>
     <assembly path="test/Life.Graphics.Tests/bin/Release/Life.Graphics.Tests.dll"/>
     <assembly path="test/Life.Math.Tests/bin/Release/Life.Math.Tests.dll"/>
     <assembly path="test/Life.Platform.Tests/bin/Release/Life.Platform.Tests.dll"/>
