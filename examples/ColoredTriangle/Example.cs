@@ -11,33 +11,10 @@ using OpenTK.Graphics;
 using OpenTK;
 
 using Vector3 = Life.Math.Vector3;
+using ExampleCore;
 
 namespace ColoredTriangle
 {
-    [StructLayout( LayoutKind.Sequential, Pack = 1 )]
-    struct TriangleVertex
-    {
-        public readonly Vector3 position;
-        public readonly uint color;
-
-        public TriangleVertex( float x, float y, float z, Color color )
-        {
-            this.color = color.ToRgba( );
-            this.position = new Vector3( x, y, z );
-        }
-        
-		public static VertexDefinition VertexDefinition
-		{
-			get 
-			{
-				return new VertexDefinition( new[ ] {
-	                new VertexElement( VertexElementType.Position, VertexElementFormat.Float, 3 ),
-	                new VertexElement( VertexElementType.Color, VertexElementFormat.UByte, 4 )
-	            } );
-			}
-		}
-    }
-    
 	public class Example : IService
 	{
 		#region [ Private Members ]
@@ -88,14 +65,14 @@ namespace ColoredTriangle
 		
 		public void Start( Kernel kernel )
 		{
-            this.vertexBuffer = device.CreateVertexBuffer( TriangleVertex.VertexDefinition, 3 );
+            this.vertexBuffer = device.CreateVertexBuffer( ColoredVertex.VertexDefinition, 3 );
             this.indexBuffer = device.CreateIndexBuffer( IndexBufferFormat.UShort, 3 );
 
             using ( vertexBuffer.Lock( BufferLock.Discard ) )
             {
-            	vertexBuffer.Write( new TriangleVertex( -0.75f, -0.75f, 0, Color.Red ) );
-            	vertexBuffer.Write( new TriangleVertex( 0f, 0.75f, 0, Color.Green ) );
-            	vertexBuffer.Write( new TriangleVertex( 0.75f, -0.75f, 0, Color.Blue ) );
+            	vertexBuffer.Write( new ColoredVertex( -0.75f, -0.75f, 0, Color.Red ) );
+            	vertexBuffer.Write( new ColoredVertex( 0f, 0.75f, 0, Color.Green ) );
+            	vertexBuffer.Write( new ColoredVertex( 0.75f, -0.75f, 0, Color.Blue ) );
             }
 
             using ( indexBuffer.Lock( BufferLock.Discard ) )

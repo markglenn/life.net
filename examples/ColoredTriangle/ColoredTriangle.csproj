@@ -63,6 +63,10 @@
       <Project>{1B9D624C-9801-428A-A296-78C37676A707}</Project>
       <Name>Life</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExampleCore\ExampleCore.csproj">
+      <Project>{68853903-F041-4A99-94C8-62E209F0C675}</Project>
+      <Name>ExampleCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

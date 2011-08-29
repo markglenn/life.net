@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpinningCube", "examples\Sp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColoredTriangle", "examples\ColoredTriangle\ColoredTriangle.csproj", "{F396E5F9-E4D8-4985-83B3-EA5E554C053A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleCore", "examples\ExampleCore\ExampleCore.csproj", "{68853903-F041-4A99-94C8-62E209F0C675}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{5F507673-D89B-4498-A247-4D0C01CA2E3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F507673-D89B-4498-A247-4D0C01CA2E3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F507673-D89B-4498-A247-4D0C01CA2E3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68853903-F041-4A99-94C8-62E209F0C675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68853903-F041-4A99-94C8-62E209F0C675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68853903-F041-4A99-94C8-62E209F0C675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68853903-F041-4A99-94C8-62E209F0C675}.Release|Any CPU.Build.0 = Release|Any CPU
 		{77117D8D-1966-4314-B92C-AB41A65ADCDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{77117D8D-1966-4314-B92C-AB41A65ADCDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77117D8D-1966-4314-B92C-AB41A65ADCDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -120,6 +126,7 @@ Global
 		{E0325E34-004F-4EBF-A955-0A86ADE800BB} = {E5615BC7-82B8-44A5-8E27-1AC32D501670}
 		{77117D8D-1966-4314-B92C-AB41A65ADCDD} = {9F7C6114-42BE-4926-BECD-3EB994609424}
 		{F396E5F9-E4D8-4985-83B3-EA5E554C053A} = {9F7C6114-42BE-4926-BECD-3EB994609424}
+		{68853903-F041-4A99-94C8-62E209F0C675} = {9F7C6114-42BE-4926-BECD-3EB994609424}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = examples\ColoredTriangle\ColoredTriangle.csproj
