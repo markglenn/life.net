@@ -18,6 +18,10 @@ namespace Life.Graphics.OpenGL
 			window.OnClose += _ => {
 				this.Status = ServiceStatus.Dead;
 			};
+			
+			window.OnResize += ( width, height ) => {
+				GL.Viewport( 0, 0, width, height );
+			};
 		}
 
 		#region [ IDevice implementation ]
@@ -49,7 +53,7 @@ namespace Life.Graphics.OpenGL
 			}
 			else
 			{
-				GL.BindBuffer( BufferTarget.ElementArrayBuffer, 0 );
+				//GL.BindBuffer( BufferTarget.ElementArrayBuffer, 0 );
 				GL.DrawArrays( GetMode( operation.OperationType ), 0, operation.PrimitiveCount );
 			}
 		}
@@ -70,7 +74,16 @@ namespace Life.Graphics.OpenGL
 		
 		public override void Start( Kernel kernel )
 		{
-			GL.ClearColor( Color.Black );
+			GL.ClearColor( Color.White );
+			GL.Viewport( 0, 0, this.WindowService.Width, this.WindowService.Height );
+			
+			var lookat = Matrix4.LookAt(0, 0, 1, 0, 0, -2, 0, 1, 0);
+			GL.MatrixMode(MatrixMode.Modelview);
+			GL.LoadMatrix(ref lookat);
+			
+			GL.Clear( ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit );
+			
+			GL.Enable( EnableCap.DepthTest );
 		}
 
 		public override void Stop( Kernel kernel )
@@ -80,7 +93,7 @@ namespace Life.Graphics.OpenGL
 		public override void Update (GameTime gameTime)
 		{
 			this.WindowService.Window.SwapBuffers( );
-			GL.Clear( ClearBufferMask.ColorBufferBit );
+			GL.Clear( ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit );
 		}
 
 		public override string Name 

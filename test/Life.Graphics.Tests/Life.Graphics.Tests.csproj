@@ -38,6 +38,7 @@
     <Reference Include="FakeItEasy, Version=1.6.4075.221, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c">
       <HintPath>..\..\lib\FakeItEasy.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -46,6 +47,7 @@
     <Compile Include="HardwareVertexBufferTests.cs" />
     <Compile Include="HardwareIndexBufferTests.cs" />
     <Compile Include="RenderOperationTests.cs" />
+    <Compile Include="ColorExtensionsTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

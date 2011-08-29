@@ -45,7 +45,7 @@ namespace Life.Graphics.OpenGL
                 { VertexElementFormat.Double, ColorPointerType.Double },
                 { VertexElementFormat.Short, ColorPointerType.Short },
                 { VertexElementFormat.Int, ColorPointerType.Int },
-                { VertexElementFormat.UByte, ColorPointerType.Byte }
+                { VertexElementFormat.UByte, ColorPointerType.UnsignedByte }
             };
 
         private static readonly IDictionary<VertexElementType, TextureUnit> TextureUnitType =
@@ -92,17 +92,20 @@ namespace Life.Graphics.OpenGL
                 switch ( definition.Type )
                 {
                     case VertexElementType.Color:
+                    	GL.EnableClientState( ArrayCap.ColorArray );
                         GL.ColorPointer( definition.Count,
                             ColorType[ definition.Format ], 
                             this.VertexDefinition.Stride, definition.Offset );
                         break;
 
                     case VertexElementType.Normal:
+                    	GL.EnableClientState( ArrayCap.NormalArray );
                         GL.NormalPointer( NormalType[ definition.Format ], this.VertexDefinition.Stride,
                                           definition.Offset );
                         break;
 
                     case VertexElementType.Position:
+                    	GL.EnableClientState( ArrayCap.VertexArray );
                         GL.VertexPointer( definition.Count,
                             VertexType[ definition.Format ], this.Stride, definition.Offset );
                         break;
@@ -115,6 +118,7 @@ namespace Life.Graphics.OpenGL
                     case VertexElementType.Texture5:
                     case VertexElementType.Texture6:
                     case VertexElementType.Texture7:
+                    	GL.EnableClientState( ArrayCap.TextureCoordArray );
                         GL.ClientActiveTexture( TextureUnitType[ definition.Type ] );
                         GL.TexCoordPointer( definition.Count,
                             TextureCoordinateType[ definition.Format ], this.VertexDefinition.Stride,

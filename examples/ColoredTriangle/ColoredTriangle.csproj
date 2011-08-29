@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F396E5F9-E4D8-4985-83B3-EA5E554C053A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ColoredTriangle</RootNamespace>
+    <AssemblyName>ColoredTriangle</AssemblyName>
+    <StartupObject>ColoredTriangle.Example</StartupObject>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Example.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Life.Graphics\Life.Graphics.csproj">
+      <Project>{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}</Project>
+      <Name>Life.Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life.Graphics.OpenGL\Life.Graphics.OpenGL.csproj">
+      <Project>{2AC35481-5012-4253-BE8F-A6F21A33EB4D}</Project>
+      <Name>Life.Graphics.OpenGL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life.Input\Life.Input.csproj">
+      <Project>{4E8CA88F-7381-414F-A948-10188AD84399}</Project>
+      <Name>Life.Input</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life.Input.Sdl\Life.Input.Sdl.csproj">
+      <Project>{5F507673-D89B-4498-A247-4D0C01CA2E3F}</Project>
+      <Name>Life.Input.Sdl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life.Math\Life.Math.csproj">
+      <Project>{10BD7757-CCD5-4804-B87F-086BCDE024CD}</Project>
+      <Name>Life.Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life.Platform\Life.Platform.csproj">
+      <Project>{247A604B-EF48-4F4D-8CBD-E143B001570A}</Project>
+      <Name>Life.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life\Life.csproj">
+      <Project>{1B9D624C-9801-428A-A296-78C37676A707}</Project>
+      <Name>Life</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="OpenTK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\opentk\OpenTK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
