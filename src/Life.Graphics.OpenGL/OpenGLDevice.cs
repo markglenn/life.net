@@ -8,6 +8,9 @@ using OpenTKDisplayResolution = OpenTK.DisplayResolution;
 using System.Drawing;
 using OpenTK.Graphics.OpenGL;
 
+using Vector3 = Life.Math.Vector3;
+using Matrix4 = Life.Math.Matrix4;
+
 namespace Life.Graphics.OpenGL
 {
 	public class OpenGLDevice : DeviceBase
@@ -68,6 +71,21 @@ namespace Life.Graphics.OpenGL
 			return new OpenGLIndexBuffer( format, BufferUsage.Static, numIndices );
 		}
 		
+		public override void SetMatrix (MatrixType matrixType, Matrix4 matrix)
+		{			
+			switch( matrixType )
+			{
+			case MatrixType.ModelView:
+				GL.MatrixMode( MatrixMode.Modelview );
+				break;
+				
+			case MatrixType.Projection:
+				GL.MatrixMode( MatrixMode.Projection );
+				break;
+			}
+				
+			GL.LoadMatrix( matrix.M );
+		}
 		#endregion
 
 		#region [ IService implementation ]
@@ -77,9 +95,12 @@ namespace Life.Graphics.OpenGL
 			GL.ClearColor( Color.White );
 			GL.Viewport( 0, 0, this.WindowService.Width, this.WindowService.Height );
 			
-			var lookat = Matrix4.LookAt(0, 0, 1, 0, 0, -2, 0, 1, 0);
-			GL.MatrixMode(MatrixMode.Modelview);
-			GL.LoadMatrix(ref lookat);
+			var lookat = Matrix4.LookAt( 
+				new Vector3( 0, 0, 1 ), 
+				new Vector3( 0, 0, -2 ), 
+				new Vector3( 0, 1, 0 ) );
+				
+			this.SetMatrix( MatrixType.ModelView, lookat );
 			
 			GL.Clear( ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit );
 			

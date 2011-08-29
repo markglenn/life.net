@@ -70,9 +70,9 @@ namespace ColoredTriangle
 
             using ( vertexBuffer.Lock( BufferLock.Discard ) )
             {
-            	vertexBuffer.Write( new ColoredVertex( -0.75f, -0.75f, 0, Color.Red ) );
-            	vertexBuffer.Write( new ColoredVertex( 0f, 0.75f, 0, Color.Green ) );
-            	vertexBuffer.Write( new ColoredVertex( 0.75f, -0.75f, 0, Color.Blue ) );
+            	vertexBuffer.Write( new ColoredVertex( -0.75f, -0.75f, 0, Color.Black ) );
+            	vertexBuffer.Write( new ColoredVertex( 0f, 0.75f, 0, Color.Black ) );
+            	vertexBuffer.Write( new ColoredVertex( 0.75f, -0.75f, 0, Color.Black ) );
             }
 
             using ( indexBuffer.Lock( BufferLock.Discard ) )

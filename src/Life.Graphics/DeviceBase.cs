@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Life.Platform;
 using Life;
+using Life.Math;
 
 namespace Life.Graphics
 {
@@ -32,7 +33,13 @@ namespace Life.Graphics
 		public abstract HardwareVertexBuffer CreateVertexBuffer( VertexDefinition vertexDefinition, int numVertices );
 		
 		public abstract HardwareIndexBuffer CreateIndexBuffer( IndexBufferFormat format, int numIndices );
-		
+	
+        /// <summary>
+        /// Sets a matrix within the device
+        /// </summary>
+        /// <param name="matrixType">Type of matrix being set</param>
+        /// <param name="matrix">Matrix to set</param>
+        public abstract void SetMatrix( MatrixType matrixType, Matrix4 matrix );	
 		#endregion
 
 		#region [ IService implementation ]

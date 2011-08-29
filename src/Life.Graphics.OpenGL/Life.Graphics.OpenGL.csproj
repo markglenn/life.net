@@ -58,6 +58,10 @@
       <Project>{1B9D624C-9801-428A-A296-78C37676A707}</Project>
       <Name>Life</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Life.Math\Life.Math.csproj">
+      <Project>{10BD7757-CCD5-4804-B87F-086BCDE024CD}</Project>
+      <Name>Life.Math</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

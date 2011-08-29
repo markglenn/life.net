@@ -128,6 +128,23 @@ namespace Life.Math.Tests
             Assert.AreEqual( expected, translation );
         }
 
+		[Test]
+		public void LookAt_CreatesLookAtMatrix( )
+		{
+			var lookat = Matrix4.LookAt( 
+				new Vector3( 0, 0, 1 ), 
+				new Vector3( 0, 0, -2 ), 
+				new Vector3( 0, 1, 0 ) );		
+				
+			var expected = new Matrix4(
+				1, 0, 0, 0,
+				0, 1, 0, 0,
+				0, 0, 1, 0,
+				0, 0, -1, 1 );
+			
+			Assert.AreEqual( expected, lookat ); 
+		}
+		
         [Test]
         public void Mutliply_WithVectorAndMatrix_ReturnsVector( )
         {

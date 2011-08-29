@@ -147,32 +147,131 @@ namespace Life.Math
             return sb.ToString( );
         }
 
-        public static Matrix4 Scale( float x, float y, float z )
+        #region [ Matrix Creation Methods ]
+
+        /// <summary>
+        /// Builds a scale matrix
+        /// </summary>
+        /// <param name="v">Vector to scale by</param>
+        /// <returns>Scale matrix</returns>
+        public static Matrix4 Scale ( Vector3 v )
         {
+            return Scale( v.X, v.Y, v.Z );
+		}
+
+        /// <summary>
+        /// Builds a scale matrix
+        /// </summary>
+        /// <param name="x">Scale x by this</param>
+        /// <param name="y">Scale y by this</param>
+        /// <param name="z">Scale z by this</param>
+        /// <returns>Scale matrix</returns>
+        public static Matrix4 Scale ( float x, float y, float z )
+		{
+			return new Matrix4 (
+				x, 0, 0, 0,
+				0, y, 0, 0,
+				0, 0, z, 0,
+				0, 0, 0, 1 );
+		}
+
+		public static Matrix4 Translation ( Vector3 v )
+		{
+		    return Translation( v.X, v.Y, v.Z );
+		}
+
+        public static Matrix4 Translation ( float x, float y, float z )
+		{
+			return new Matrix4 (
+				1, 0, 0, 0,
+				0, 1, 0, 0,
+				0, 0, 1, 0,
+				x, y, z, 1 );
+		}
+
+        public static Matrix4 Projection( float fieldOfViewY, float aspect, float zNear, float zFar )
+        {
+            if ( fieldOfViewY <= 0 || fieldOfViewY > System.Math.PI )
+                throw new ArgumentOutOfRangeException( "fieldOfViewY" );
+            if ( aspect <= 0 )
+                throw new ArgumentOutOfRangeException( "aspect" );
+            if ( zNear <= 0 )
+                throw new ArgumentOutOfRangeException( "zNear" );
+            if ( zFar <= 0 )
+                throw new ArgumentOutOfRangeException( "zFar" );
+            if ( zNear >= zFar )
+                throw new ArgumentOutOfRangeException( "zNear" );
+
+            float yMax = zNear * ( float )System.Math.Tan( 0.5f * fieldOfViewY );
+            float yMin = -yMax;
+            float xMin = yMin * aspect;
+            float xMax = yMax * aspect;
+
+            return Projection( xMin, xMax, yMin, yMax, zNear, zFar );
+        }
+
+        public static Matrix4 Projection( float left, float right, float bottom, float top, float zNear, float zFar )
+        {
+            if ( zNear <= 0 )
+                throw new ArgumentOutOfRangeException( "zNear" );
+            if ( zFar <= 0 )
+                throw new ArgumentOutOfRangeException( "zFar" );
+            if ( zNear >= zFar )
+                throw new ArgumentOutOfRangeException( "zNear" );
+
+            float x = ( 2.0f * zNear ) / ( right - left );
+            float y = ( 2.0f * zNear ) / ( top - bottom );
+            float a = ( right + left ) / ( left - right );
+            float b = ( top + bottom ) / (  bottom - top);
+            float c = zFar / ( zFar - zNear );
+            float d = ( zFar * zNear ) / ( zNear - zFar );
+
+            return new Matrix4(
+                x, 0, 0, 0,
+                0, y, 0, 0,
+                a, b, c, 1,
+                0, 0, d, 0 );
+        }
+
+        public static Matrix4 Orthographic( float left, float right, float bottom, float top, float zNear, float zFar )
+        {
+            float x = 2.0f / ( right - left );
+            float y = 2.0f / ( top - bottom );
+            float z = 1.0f / ( zFar - zNear );
+            float a = ( left + right ) / ( left - right );
+            float b = ( top + bottom ) / ( bottom - top );
+            float c = zNear / ( zNear - zFar );
+
             return new Matrix4(
                 x, 0, 0, 0,
                 0, y, 0, 0,
                 0, 0, z, 0,
-                0, 0, 0, 1 );
+                a, b, c, 1 );
         }
 
-        public static Matrix4 Scale( Vector3 v )
+        public static Matrix4 LookAt( Vector3 eye, Vector3 target, Vector3 up )
         {
-            return Scale( v.X, v.Y, v.Z );
+            Vector3 z = ( eye - target ).Unit( );
+            Vector3 x = Vector3.Cross( up, z ).Unit( );
+            Vector3 y = Vector3.Cross( z, x ).Unit( );
+
+            var v = new Vector3(
+                -Vector3.Dot( x, eye ),
+                -Vector3.Dot( y, eye ),
+                -Vector3.Dot( z, eye ) );
+
+            return new Matrix4(
+                x.X, y.X, z.X, 0,
+                x.Y, y.Y, z.Y, 0,
+                x.Z, y.Z, z.Z, 0,
+                v.X, v.Y, v.Z, 1 );
         }
+
+        #endregion [ Matrix Creation Methods ]
+
 
         public static readonly Matrix4 Zero = new Matrix4 ( 0 );
         public static readonly Matrix4 Identity = Scale( 1, 1, 1 );
-
-        public static Matrix4 Translation( float x, float y, float z )
-        {
-
-            return new Matrix4(
-                1, 0, 0, 0,
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                x, y, z, 1 );
-        }
 
     }
 }
