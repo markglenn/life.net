@@ -37,6 +37,7 @@ namespace Life.Graphics
 		#endregion
 		
 		protected HardwareBuffer( )
+			: base( "Hardware Buffer" )
 		{
 		}
 		

@@ -4,7 +4,12 @@ namespace Life
 {
 	public abstract class ResourceBase : IResource
 	{
-		#region IResource implementation
+		public ResourceBase( string name )
+		{
+			this.Name = name;
+		}
+		
+		#region [ IResource implementation ]
 		
 		public bool Load( )
 		{
@@ -32,6 +37,8 @@ namespace Life
 
 		public ResourceState State { get; private set; }
 		
+		public string Name { get; protected set; }
+		
 		~ResourceBase( )
 		{
 			Dispose( false );
@@ -43,7 +50,11 @@ namespace Life
 			GC.SuppressFinalize( this );
 		}
 		
-		protected abstract void Dispose( bool disposing );
+		protected virtual void Dispose( bool disposing )
+		{
+			if ( disposing && this.State == ResourceState.Loaded )
+				this.Unload( );
+		}
 		
 		#endregion
 		

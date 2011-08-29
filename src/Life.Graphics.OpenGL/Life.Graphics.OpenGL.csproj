@@ -42,6 +42,7 @@
     <Compile Include="OpenGLVertexBuffer.cs" />
     <Compile Include="OpenGLDevice.cs" />
     <Compile Include="OpenGLIndexBuffer.cs" />
+    <Compile Include="Resources\OpenGLTexture.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -57,5 +58,8 @@
       <Project>{1B9D624C-9801-428A-A296-78C37676A707}</Project>
       <Name>Life</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

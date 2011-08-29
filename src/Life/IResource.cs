@@ -16,6 +16,8 @@ namespace Life
 		
 		bool Load( );
 		bool Unload( );
+		
+		string Name { get; }
 	}
 }
 

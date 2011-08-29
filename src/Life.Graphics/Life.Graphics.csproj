@@ -49,6 +49,7 @@
     <Compile Include="RenderOperation.cs" />
     <Compile Include="IRenderable.cs" />
     <Compile Include="ColorExtensions.cs" />
+    <Compile Include="Resources\Texture.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -64,5 +65,8 @@
       <Project>{10BD7757-CCD5-4804-B87F-086BCDE024CD}</Project>
       <Name>Life.Math</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>
