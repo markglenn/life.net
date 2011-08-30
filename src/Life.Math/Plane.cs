@@ -73,7 +73,7 @@ namespace Life.Math
 		public override bool Equals( object obj )
 		{
             if ( ReferenceEquals( null, obj ) ) return false;
-            return obj.GetType( ) == typeof( Matrix4 ) && this.Equals( ( Matrix4 )obj );
+            return obj.GetType( ) == typeof( Plane ) && this.Equals( ( Plane )obj );
  
 		}
 		
@@ -104,6 +104,7 @@ namespace Life.Math
                 return ( result * 397 ) ^ this.D.GetHashCode( );
             }
         }
+		
         
         public override string ToString( )
         {

@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
-
+using OQuaternion = OpenTK.Quaternion;
+using OMatrix4 = OpenTK.Matrix4;
+using System;
 namespace Life.Math.Tests
 {
     [TestFixture]
@@ -136,7 +138,23 @@ namespace Life.Math.Tests
 
             Assert.That( Quaternion.Subtract( result, expected ).Length( ) < 0.001f );
         }
-
+		
+		[Test]
+		public void ToMatrix4_ConvertsToRotationMatrix( )
+		{
+			var matrix = new Quaternion( 4, 1, 2, 3 ).Normalized( ).ToMatrix4( );
+			
+			var expected = new Matrix4( 
+				0.1333333f, -0.6666667f, 0.7333333f, 0,
+				0.9333333f, 0.3333333f, 0.1333334f, 0,
+				-0.3333333f, 0.6666666f, 0.6666667f, 0,
+				0, 0, 0, 1 );
+			
+			Assert.AreEqual( expected, matrix );
+			for( int i = 0; i < 16; ++i )
+				Assert.That( System.Math.Abs( expected.M[i] - matrix.M[ i ] ) < 0.001f );
+			
+		}
         #endregion
     }
 }

@@ -65,17 +65,17 @@ namespace Life.Math
         /// <returns>Comparable matrix</returns>
         public Matrix4 ToMatrix4( )
         {
-            float xx = this.v.X * this.v.X;
-            float xy = this.v.X * this.v.Y;
-            float xz = this.v.X * this.v.Z;
-            float xw = this.v.X * this.W;
+            float xx = this.V.X * this.V.X;
+            float xy = this.V.X * this.V.Y;
+            float xz = this.V.X * this.V.Z;
+            float xw = this.V.X * this.W;
 
-            float yy = this.v.Y * this.v.Y;
-            float yz = this.v.Y * this.v.Z;
-            float yw = this.v.Y * this.W;
+            float yy = this.V.Y * this.V.Y;
+            float yz = this.V.Y * this.V.Z;
+            float yw = this.V.Y * this.W;
 
-            float zz = this.v.Z * this.v.Z;
-            float zw = this.v.Z * this.W;
+            float zz = this.V.Z * this.V.Z;
+            float zw = this.V.Z * this.W;
 
             float m00 = 1 - 2 * ( yy + zz );
             float m01 = 2 * ( xy - zw );
@@ -176,7 +176,29 @@ namespace Life.Math
         {
             return Quaternion.Multiply( left, right );
         }
+		
+        public Vector3 RotateVector( Vector3 vector )
+        {
+            Quaternion t = ( this * vector ) * ( ~this );
 
+            return t.V;
+        }
+				
+        public static Quaternion operator *( Quaternion q, Vector3 v )
+        {
+            return new Quaternion(
+                -( q.V.X * v.X + q.V.Y * v.Y + q.V.Z * v.Z ),
+                q.W * v.X + q.V.Y * v.Z - q.V.Z * v.Y,
+                q.W * v.Y + q.V.Z * v.X - q.V.X * v.Z,
+                q.W * v.Z + q.V.X * v.Y - q.V.Y * v.X
+                );
+        }
+		
+        public static Quaternion operator ~( Quaternion q )
+        {
+            return new Quaternion( q.W, -q.V );
+        }
+		
         #endregion [ Math Operations ]
 
         public static readonly Quaternion Identity = new Quaternion( 1, Vector3.Zero );
