@@ -31,7 +31,46 @@ namespace Life.Math
             return new Vector4( left.X - right.X, left.Y - right.Y, left.Z - right.Z, left.W - right.W );
         }
 
+        public static Vector4 Multiply( Vector4 left, float right )
+        {
+            return new Vector4( left.X * right, left.Y * right, left.Z * right, left.W * right );
+        }
+
+        public static Vector4 Divide( Vector4 left, float right )
+        {
+            return new Vector4( left.X / right, left.Y / right, left.Z / right, left.W / right );
+        }
+        
         #endregion [ Math Operations ]
+
+        #region [ Operators ]
+
+        public static Vector4 operator +( Vector4 left, Vector4 right )
+        {
+            return Add( left, right );
+        }
+
+        public static Vector4 operator -( Vector4 left, Vector4 right )
+        {
+            return Subtract( left, right );
+        }
+
+        public static Vector4 operator /( Vector4 left, float right )
+        {
+            return Divide( left, right );
+        }
+
+        public static Vector4 operator *( Vector4 left, float right )
+        {
+            return Multiply( left, right );
+        }
+
+        public static Vector4 operator -( Vector4 vector )
+        {
+            return new Vector4( -vector.X, -vector.Y, -vector.Z, -vector.W );
+        }
+
+        #endregion [ Operators ]
 
         #region [ IEquality<Vector4> Implementation ]
 
@@ -77,16 +116,6 @@ namespace Life.Math
         }
 
         #endregion [ Object Overrides ]
-
-        public static Vector4 Multiply( Vector4 left, float right )
-        {
-            return new Vector4( left.X * right, left.Y * right, left.Z * right, left.W * right );
-        }
-
-        public static Vector4 Divide( Vector4 left, float right )
-        {
-            return new Vector4( left.X / right, left.Y / right, left.Z / right, left.W / right );
-        }
 
         public float LengthSquared( )
         {

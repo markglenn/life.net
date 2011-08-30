@@ -24,6 +24,14 @@ namespace Life.Math.Tests
             Assert.AreEqual( 4, plane.D );
         }
 
+		[Test]
+		public void Ctor_WithVector4_SetsNormalAndD( )
+		{
+			Assert.AreEqual(
+				new Plane( new Vector4( 1, 2, 3, 4 ) ),
+				new Plane( 1, 2, 3, 4 ) );
+		}
+		
         [Test]
         public void DistanceTo_ReturnsDistanceFromPoint( )
         {

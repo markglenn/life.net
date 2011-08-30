@@ -59,6 +59,43 @@ namespace Life.Math
             return new Quaternion( this.W, -this.V );
         }
 
+        /// <summary>
+        /// Converts the quaternion to a rotation matrix
+        /// </summary>
+        /// <returns>Comparable matrix</returns>
+        public Matrix4 ToMatrix4( )
+        {
+            float xx = this.v.X * this.v.X;
+            float xy = this.v.X * this.v.Y;
+            float xz = this.v.X * this.v.Z;
+            float xw = this.v.X * this.W;
+
+            float yy = this.v.Y * this.v.Y;
+            float yz = this.v.Y * this.v.Z;
+            float yw = this.v.Y * this.W;
+
+            float zz = this.v.Z * this.v.Z;
+            float zw = this.v.Z * this.W;
+
+            float m00 = 1 - 2 * ( yy + zz );
+            float m01 = 2 * ( xy - zw );
+            float m02 = 2 * ( xz + yw );
+
+            float m10 = 2 * ( xy + zw );
+            float m11 = 1 - 2 * ( xx + zz );
+            float m12 = 2 * ( yz - xw );
+
+            float m20 = 2 * ( xz - yw );
+            float m21 = 2 * ( yz + xw );
+            float m22 = 1 - 2 * ( xx + yy );
+
+            return new Matrix4(
+                m00, m01, m02, 0.0f,
+                m10, m11, m12, 0.0f,
+                m20, m21, m22, 0.0f,
+                0.0f, 0.0f, 0.0f, 1.0f );
+        }
+        
         #region [ IEquality Implementation ]
 
         public bool Equals( Quaternion other )

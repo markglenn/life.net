@@ -62,7 +62,6 @@ namespace Life.Math
             return other.X.Equals( this.X ) && other.Y.Equals( this.Y ) && other.Z.Equals( this.Z );
         }
 
-
         public static bool operator ==( Vector3 left, Vector3 right )
         {
             return Equals( left, right );

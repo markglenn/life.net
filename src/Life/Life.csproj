@@ -62,6 +62,7 @@
     <Compile Include="ResourceBase.cs" />
     <Compile Include="Archive\CompositeArchive.cs" />
     <Compile Include="Archive\ZipArchive.cs" />
+    <Compile Include="Scenes\Camera.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -79,5 +80,8 @@
       <Project>{10BD7757-CCD5-4804-B87F-086BCDE024CD}</Project>
       <Name>Life.Math</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scenes\" />
   </ItemGroup>
 </Project>

@@ -121,7 +121,7 @@ namespace Life.Math
             );
         }
 
-        public static object Multiply( Vector3 v, Matrix4 m )
+        public static Vector3 Multiply( Vector3 v, Matrix4 m )
         {
             float inv = 1.0f / ( m.M[ 3 ] * v.X + m.M[ 7 ] * v.Y + m.M[ 11 ] * v.Z + m.M[ 15 ] );
 
@@ -269,6 +269,29 @@ namespace Life.Math
 
         #endregion [ Matrix Creation Methods ]
 
+        #region [ Math Operators ]
+
+        public static Vector3 operator * ( Vector3 v, Matrix4 m )
+		{
+			return Matrix4.Multiply( v, m );
+		}
+
+        public static Matrix4 operator * ( Matrix4 m1, Matrix4 m2 )
+        {
+        	return Matrix4.Multiply( m1, m2 );
+        }
+        
+        public static Matrix4 operator + ( Matrix4 m1, Matrix4 m2 )
+        {
+        	return Matrix4.Add( m1, m2 );
+        }
+        
+        public static Matrix4 operator - ( Matrix4 m1, Matrix4 m2 )
+        {
+        	return Matrix4.Subtract( m1, m2 );
+        }
+
+        #endregion [ Math Operators ]
 
         public static readonly Matrix4 Zero = new Matrix4 ( 0 );
         public static readonly Matrix4 Identity = Scale( 1, 1, 1 );
