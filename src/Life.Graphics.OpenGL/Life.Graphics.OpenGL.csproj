@@ -42,7 +42,7 @@
     <Compile Include="OpenGLVertexBuffer.cs" />
     <Compile Include="OpenGLDevice.cs" />
     <Compile Include="OpenGLIndexBuffer.cs" />
-    <Compile Include="Resources\OpenGLTexture.cs" />
+    <Compile Include="Materials\OpenGLTexture.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -64,6 +64,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Folder Include="Materials\" />
   </ItemGroup>
 </Project>

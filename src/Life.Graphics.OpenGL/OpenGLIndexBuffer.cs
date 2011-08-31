@@ -94,8 +94,6 @@ namespace Life.Graphics.OpenGL
         protected override void Dispose( bool disposing )
         {
             GL.DeleteBuffers( 1, ref this.iboId );
-
-            base.Dispose( disposing );
         }
 
 	}

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Life.Platform;
 using Life;
 using Life.Math;
+using Life.Graphics.Materials;
+using Life.Archive;
 
 namespace Life.Graphics
 {
@@ -33,7 +35,15 @@ namespace Life.Graphics
 		public abstract HardwareVertexBuffer CreateVertexBuffer( VertexDefinition vertexDefinition, int numVertices );
 		
 		public abstract HardwareIndexBuffer CreateIndexBuffer( IndexBufferFormat format, int numIndices );
-	
+		
+		/// <summary>
+		/// Loads a texture resource into the graphics device context
+		/// </summary>
+		/// <param name='archive'>Archive that stores the resource</param>
+		/// <param name='name'>Name of the resource</param>
+		/// <returns>The texture</returns>
+		public abstract Texture CreateTexture( IArchive archive, string name );	
+		
         /// <summary>
         /// Sets a matrix within the device
         /// </summary>

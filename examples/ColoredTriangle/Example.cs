@@ -8,11 +8,6 @@ using Life.Math;
 using Life.Graphics;
 using System.Collections.Generic;
 using OpenTK.Graphics;
-using OpenTK;
-
-using Vector3 = Life.Math.Vector3;
-using Matrix4 = Life.Math.Matrix4;
-using Quaternion = Life.Math.Quaternion;
 using ExampleCore;
 using Life.Core;
 
@@ -37,7 +32,7 @@ namespace ColoredTriangle
 			var window = new OpenTK.GameWindow( 400, 300, 
 				new GraphicsMode( new ColorFormat( 8, 8, 8, 8 ), 16 ), 
 				"OpenGL 3.1 Example", 0,
-	            DisplayDevice.Default, 2, 0, // use the default display device, request a 3.1 OpenGL context
+	            OpenTK.DisplayDevice.Default, 2, 0, // use the default display device, request a 3.1 OpenGL context
 	            GraphicsContextFlags.Debug 
 			);
 			
@@ -60,13 +55,15 @@ namespace ColoredTriangle
 		{
 			this.device = device;
 			
-			this.camera = new Camera( 
-				GetProjection( 400, 300 ),
-				Vector3.Zero,
+			this.camera = new Camera( GetProjection( 400, 300 ), Vector3.Zero,
 				Quaternion.FromAxisAngle( Vector3.UnitY, 0 ) );
+				
 			this.device.SetMatrix( MatrixType.Projection, this.camera.Projection );
 			this.device.WindowService.OnClose += (window) => {
 				this.Status = ServiceStatus.Dead;
+			};
+			this.device.WindowService.OnResize += (width, height) => {
+				this.camera.Projection = GetProjection( width, height );	
 			};
 		}
 
@@ -98,8 +95,10 @@ namespace ColoredTriangle
 
 		public void Update( GameTime gameTime )
 		{
-			camera.TranslateRelative( -Vector3.UnitZ, 0.01f );
-			this.device.SetMatrix( MatrixType.ModelView, camera.View * Matrix4.Translation( 0, 0, 0 ) );
+			var rotation = Quaternion.FromAxisAngle( Vector3.UnitY, 
+				( float )( gameTime.TotalTime.TotalSeconds ) * 2.0f );
+			this.device.SetMatrix( MatrixType.ModelView, 
+				camera.View * Matrix4.Translation( 0, 0, 2 ) * rotation.ToMatrix4( ) );
 			this.device.Render( this.renderOperation );
 		}
 

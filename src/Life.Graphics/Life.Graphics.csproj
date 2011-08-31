@@ -49,7 +49,10 @@
     <Compile Include="RenderOperation.cs" />
     <Compile Include="IRenderable.cs" />
     <Compile Include="ColorExtensions.cs" />
-    <Compile Include="Resources\Texture.cs" />
+    <Compile Include="Materials\TextureUnit.cs" />
+    <Compile Include="Materials\Texture.cs" />
+    <Compile Include="Materials\Pass.cs" />
+    <Compile Include="Materials\Material.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -67,6 +70,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Folder Include="Materials\" />
   </ItemGroup>
 </Project>

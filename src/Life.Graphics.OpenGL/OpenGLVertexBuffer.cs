@@ -133,8 +133,6 @@ namespace Life.Graphics.OpenGL
 		{
 			if ( disposing )
 				GL.DeleteBuffers( 1, ref vboId );
-				
-			base.Dispose( disposing );
 		}
 		
 		protected override bool DoLock (BufferLock lockType)

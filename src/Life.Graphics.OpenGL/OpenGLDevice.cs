@@ -10,6 +10,9 @@ using OpenTK.Graphics.OpenGL;
 
 using Vector3 = Life.Math.Vector3;
 using Matrix4 = Life.Math.Matrix4;
+using Life.Graphics.Materials;
+using Life.Archive;
+using Life.Graphics.OpenGL.Materials;
 
 namespace Life.Graphics.OpenGL
 {
@@ -56,7 +59,6 @@ namespace Life.Graphics.OpenGL
 			}
 			else
 			{
-				//GL.BindBuffer( BufferTarget.ElementArrayBuffer, 0 );
 				GL.DrawArrays( GetMode( operation.OperationType ), 0, operation.PrimitiveCount );
 			}
 		}
@@ -69,6 +71,11 @@ namespace Life.Graphics.OpenGL
 		public override HardwareIndexBuffer CreateIndexBuffer( IndexBufferFormat format, int numIndices )
 		{
 			return new OpenGLIndexBuffer( format, BufferUsage.Static, numIndices );
+		}
+		
+		public override Texture CreateTexture( IArchive archive, string name )
+		{
+			return new OpenGLTexture( name, archive );
 		}
 		
 		public override void SetMatrix (MatrixType matrixType, Matrix4 matrix)

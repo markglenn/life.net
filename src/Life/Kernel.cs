@@ -71,6 +71,8 @@ namespace Life
 						
 					current = next;
 				}
+				
+				time.Update( );
 			}
 			
 		}

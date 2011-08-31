@@ -58,8 +58,8 @@ namespace Life
 		
 		#endregion
 		
-		public virtual bool DoLoad( ) { return true; }
-		public virtual bool DoUnload( ) { return true; }
+		protected abstract bool DoLoad( );
+		protected abstract bool DoUnload( );
 	}
 }
 

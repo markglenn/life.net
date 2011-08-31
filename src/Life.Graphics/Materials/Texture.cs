@@ -2,7 +2,7 @@ using System;
 using Life.Archive;
 using System.Drawing.Imaging;
 
-namespace Life.Graphics.Resources
+namespace Life.Graphics.Materials
 {
 	public abstract class Texture : ResourceBase
     {

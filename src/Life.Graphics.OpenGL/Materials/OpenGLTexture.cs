@@ -1,25 +1,29 @@
 using System;
-using Life.Graphics.Resources;
 using Life.Archive;
 using System.Drawing.Imaging;
 using System.Drawing;
 using OpenTK.Graphics.OpenGL;
 using PixelFormat = System.Drawing.Imaging.PixelFormat;
 using OpenTKPixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
+using Life.Graphics.Materials;
 
-namespace Life.Graphics.OpenGL
+namespace Life.Graphics.OpenGL.Materials
 {
 	public class OpenGLTexture : Texture
 	{
+		#region [ Private Members ]
+		
 		private uint textureId;
 		private int width, height;
+		
+		#endregion
 		
 		public OpenGLTexture( string name, IArchive archive )
 			: base( name, archive )
 		{
 		}
 
-		public override bool DoLoad( )
+		protected override bool DoLoad( )
 		{
 			using( var stream = this.Archive.OpenFile( this.Name ) )
             {
@@ -49,7 +53,7 @@ namespace Life.Graphics.OpenGL
             return true;
 		}
 		
-		public override bool DoUnload( )
+		protected override bool DoUnload( )
 		{
 			GL.DeleteTexture( this.textureId );
 			return true;

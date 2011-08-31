@@ -34,7 +34,12 @@ namespace Life.Graphics.Tests
 			{
 				throw new NotImplementedException ();
 			}
-
+			
+			protected override void Dispose (bool disposing)
+			{
+				throw new NotImplementedException ();
+			}
+			
 		}
 		
 		[Test]

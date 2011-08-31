@@ -19,7 +19,7 @@ namespace Life.Graphics
 	/// <summary>
 	/// OpenGL buffer with ability to be stored on the GPU
 	/// </summary>
-	public abstract class HardwareBuffer : ResourceBase
+	public abstract class HardwareBuffer : IDisposable
 	{
 		#region [ Private Members ]
 		
@@ -37,7 +37,6 @@ namespace Life.Graphics
 		#endregion
 		
 		protected HardwareBuffer( )
-			: base( "Hardware Buffer" )
 		{
 		}
 		
@@ -64,14 +63,21 @@ namespace Life.Graphics
 		public abstract void Write<T>( T val ) where T : struct;
 		public abstract void Write<T>( T[ ] vals ) where T : struct;
 		
-		#region implemented abstract members of Life.ResourceBase
+		#region [ IDisposable Implementation ]
 		
-		protected override void Dispose( bool disposing )
+		~HardwareBuffer( )
 		{
-			if ( disposing && State == ResourceState.Loaded )
-				Unload( );
+			Dispose( false );
 		}
-
+		
+		public void Dispose( )
+		{
+			Dispose( true );
+			GC.SuppressFinalize( this );
+		}
+		
+		protected abstract void Dispose( bool disposing );
+		
 		#endregion
 	}
 }
