@@ -1,6 +1,5 @@
 namespace Life.Math.Bounds
 {
-
     /// <summary>
     /// Defines the 6 planes the make up a frustum.
     /// </summary>
@@ -34,8 +33,7 @@ namespace Life.Math.Bounds
         /// <summary>
         /// Bottom plane
         /// </summary>
-        Bottom,
-        
+        Bottom
     }
 
     /// <summary>
@@ -45,10 +43,10 @@ namespace Life.Math.Bounds
     {
         #region [ Private Members ]
 
-        private Matrix4 projection;
-        private Matrix4 view;
+        protected Matrix4 projection;
+        protected Matrix4 view;
 
-        private bool isDirty;
+        protected bool isDirty = true;
 
         private Plane[ ] planes;
 
@@ -61,11 +59,15 @@ namespace Life.Math.Bounds
         /// </summary>
         public Matrix4 Projection
         {
-            get { return this.projection; }
+            get
+			{ 
+				UpdateFrustum( );
+				return this.projection;
+			}
             set
             {
                 this.projection = value;
-                this.isDirty = true;
+                InvalidateFrustum( );
             }
         }
 
@@ -74,11 +76,15 @@ namespace Life.Math.Bounds
         /// </summary>
         public Matrix4 View
         {
-            get { return this.view; }
+            get
+			{ 
+				UpdateFrustum( );
+				return this.view; 
+			}
             set
             {
                 this.view = value;
-                this.isDirty = true;
+                InvalidateFrustum( );
             }
         }
 
@@ -97,7 +103,6 @@ namespace Life.Math.Bounds
         {
             this.projection = projection;
             this.view = view;
-            this.isDirty = true;
 
             UpdateFrustum( );
         }
@@ -105,9 +110,19 @@ namespace Life.Math.Bounds
         public void UpdateFrustum( )
         {
             if ( this.isDirty )
-                this.planes = GetFrustumPlanes( this.projection, this.view );
+            	DoUpdateFrustum( );
         }
+        
+		protected virtual void DoUpdateFrustum( )
+		{
+			this.planes = GetFrustumPlanes( this.projection, this.view );
+		}
 
+		protected void InvalidateFrustum( )
+		{
+			this.isDirty = true;
+		}
+		
         #region [ Private Methods ]
 
         /// <summary>

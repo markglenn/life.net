@@ -24,7 +24,7 @@ namespace Life.Core
             set
             {
                 this.position = value;
-                this.View = GetViewMatrix( this.position, this.rotation );
+                InvalidateFrustum( );
             }
         }
 
@@ -37,7 +37,7 @@ namespace Life.Core
             set 
             { 
                 this.rotation = value;
-                this.View = GetViewMatrix( this.position, this.rotation );
+                InvalidateFrustum( );
             }
         }
 
@@ -65,6 +65,12 @@ namespace Life.Core
             var vector = this.rotation.RotateVector( direction );
             this.Position += vector * distance;
         }
+        
+		protected override void DoUpdateFrustum ()
+		{
+			this.view = GetViewMatrix( this.position, this.rotation );
+			base.DoUpdateFrustum( );
+		}
     }
 
 }

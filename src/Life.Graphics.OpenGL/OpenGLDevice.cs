@@ -94,14 +94,7 @@ namespace Life.Graphics.OpenGL
 		{
 			GL.ClearColor( Color.White );
 			GL.Viewport( 0, 0, this.WindowService.Width, this.WindowService.Height );
-			
-			var lookat = Matrix4.LookAt( 
-				new Vector3( 0, 0, 1 ), 
-				new Vector3( 0, 0, -2 ), 
-				new Vector3( 0, 1, 0 ) );
-				
-			this.SetMatrix( MatrixType.ModelView, lookat );
-			
+
 			GL.Clear( ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit );
 			
 			GL.Enable( EnableCap.DepthTest );

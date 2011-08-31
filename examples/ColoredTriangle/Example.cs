@@ -11,7 +11,10 @@ using OpenTK.Graphics;
 using OpenTK;
 
 using Vector3 = Life.Math.Vector3;
+using Matrix4 = Life.Math.Matrix4;
+using Quaternion = Life.Math.Quaternion;
 using ExampleCore;
+using Life.Core;
 
 namespace ColoredTriangle
 {
@@ -23,6 +26,7 @@ namespace ColoredTriangle
         private HardwareVertexBuffer vertexBuffer;
         private readonly IDevice device;
         private RenderOperation renderOperation;
+        private Camera camera;
         
 		#endregion
  
@@ -56,6 +60,11 @@ namespace ColoredTriangle
 		{
 			this.device = device;
 			
+			this.camera = new Camera( 
+				GetProjection( 400, 300 ),
+				Vector3.Zero,
+				Quaternion.FromAxisAngle( Vector3.UnitY, 0 ) );
+			this.device.SetMatrix( MatrixType.Projection, this.camera.Projection );
 			this.device.WindowService.OnClose += (window) => {
 				this.Status = ServiceStatus.Dead;
 			};
@@ -89,6 +98,8 @@ namespace ColoredTriangle
 
 		public void Update( GameTime gameTime )
 		{
+			camera.TranslateRelative( -Vector3.UnitZ, 0.01f );
+			this.device.SetMatrix( MatrixType.ModelView, camera.View * Matrix4.Translation( 0, 0, 0 ) );
 			this.device.Render( this.renderOperation );
 		}
 
@@ -108,7 +119,13 @@ namespace ColoredTriangle
 		}
 		
 		#endregion
-
+		
+		private static Matrix4 GetProjection( int width, int height )
+        {
+            return Matrix4.Projection( ( float )System.Math.PI / 3,
+                ( float )width / height, 0.001f, 1000.0f );
+        }
+        
 		#region [ IDisposable implementation ]
 		
 		public void Dispose ()
