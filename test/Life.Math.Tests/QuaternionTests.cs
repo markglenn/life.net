@@ -150,7 +150,6 @@ namespace Life.Math.Tests
 				-0.3333333f, 0.6666666f, 0.6666667f, 0,
 				0, 0, 0, 1 );
 			
-			Assert.AreEqual( expected, matrix );
 			for( int i = 0; i < 16; ++i )
 				Assert.That( System.Math.Abs( expected.M[i] - matrix.M[ i ] ) < 0.001f );
 			

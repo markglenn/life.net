@@ -50,7 +50,7 @@ namespace Life.Core
             this.rotation = rotation;
         }
 
-        public Frustum FrustomToModelSpace( Matrix4 matrix )
+        public Frustum FrustumToModelSpace( Matrix4 matrix )
         {
             return new Frustum( this.Projection, matrix * this.View );    
         }
