@@ -129,7 +129,7 @@ Global
 		{68853903-F041-4A99-94C8-62E209F0C675} = {9F7C6114-42BE-4926-BECD-3EB994609424}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = examples\ColoredTriangle\ColoredTriangle.csproj
+		StartupItem = examples\SpinningCube\SpinningCube.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = PrefixedHierarchical

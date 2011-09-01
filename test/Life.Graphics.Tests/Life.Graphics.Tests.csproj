@@ -48,13 +48,16 @@
     <Compile Include="HardwareIndexBufferTests.cs" />
     <Compile Include="RenderOperationTests.cs" />
     <Compile Include="ColorExtensionsTests.cs" />
-    <Compile Include="Materials\MaterialTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\..\src\Life.Graphics\Life.Graphics.csproj">
       <Project>{40BB569D-2F91-45CB-A1DD-384EAF3FEDAA}</Project>
       <Name>Life.Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Life\Life.csproj">
+      <Project>{1B9D624C-9801-428A-A296-78C37676A707}</Project>
+      <Name>Life</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

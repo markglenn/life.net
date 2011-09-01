@@ -99,7 +99,7 @@ namespace Life.Graphics.OpenGL
 		
 		public override void Start( Kernel kernel )
 		{
-			GL.ClearColor( Color.White );
+			GL.ClearColor( Color.Black );
 			GL.Viewport( 0, 0, this.WindowService.Width, this.WindowService.Height );
 
 			GL.Clear( ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit );

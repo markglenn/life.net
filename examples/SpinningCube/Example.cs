@@ -16,10 +16,8 @@ namespace SpinningCube
 	{
 		#region [ Private Members ]
 		
-        private HardwareIndexBuffer indexBuffer;
-        private HardwareVertexBuffer vertexBuffer;
         private readonly IDevice device;
-        private RenderOperation renderOperation;
+        private RenderableCube cube;
         private Camera camera;
         
 		#endregion
@@ -70,21 +68,10 @@ namespace SpinningCube
 		
 		public void Start( Kernel kernel )
 		{
-            this.vertexBuffer = device.CreateVertexBuffer( TexturedVertex.VertexDefinition, 3 );
-            this.indexBuffer = device.CreateIndexBuffer( IndexBufferFormat.UShort, 3 );
-
-            using ( vertexBuffer.Lock( BufferLock.Discard ) )
-            {
-            	vertexBuffer.Write( new TexturedVertex( -0.75f, -0.75f, 0, 0, 1 ) );
-            	vertexBuffer.Write( new TexturedVertex( 0f, 0.75f, 0, 0.5f, 0 ) );
-            	vertexBuffer.Write( new TexturedVertex( 0.75f, -0.75f, 0, 1, 1 ) );
-            }
-
-            using ( indexBuffer.Lock( BufferLock.Discard ) )
-                indexBuffer.Write( new ushort[] { 0, 1, 2 } );
-
-            this.renderOperation = new RenderOperation( OperationType.TriangleList, 3, this.vertexBuffer, this.indexBuffer );
+			this.cube = new RenderableCube( this.device );
             this.Status = ServiceStatus.Alive;
+            
+			this.cube.Load( );
 		}
 
 		public void Stop( Kernel kernel = null )
@@ -94,11 +81,10 @@ namespace SpinningCube
 
 		public void Update( GameTime gameTime )
 		{
-			var rotation = Quaternion.FromAxisAngle( Vector3.UnitY, 
-				( float )( gameTime.TotalTime.TotalSeconds ) * 2.0f );
 			this.device.SetMatrix( MatrixType.ModelView, 
-				camera.View * Matrix4.Translation( 0, 0, 2 ) * rotation.ToMatrix4( ) );
-			this.device.Render( this.renderOperation );
+				camera.View * Matrix4.Translation( cube.WorldPosition ) *
+				cube.WorldOrientation.ToMatrix4( ) );
+			this.device.Render( this.cube.RenderOperation );
 		}
 
 		public string Name 
@@ -128,8 +114,8 @@ namespace SpinningCube
 		
 		public void Dispose ()
 		{
-			this.vertexBuffer.Dispose( );
-			this.indexBuffer.Dispose( );
+			this.cube.Dispose( );
+			this.device.Dispose( );
 		}
 		
 		#endregion

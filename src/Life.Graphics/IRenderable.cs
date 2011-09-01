@@ -1,6 +1,7 @@
 using System;
 using Life.Math;
 using System.Collections.Generic;
+using Life.Graphics.Materials;
 
 namespace Life.Graphics
 {
@@ -28,6 +29,11 @@ namespace Life.Graphics
         /// Gets and sets the matrices required to draw
         /// </summary>
         IEnumerable<Matrix4> Matrices { get; set; }
+        
+        /// <summary>
+        /// Material used for rendering
+        /// </summary>
+		Material Material { get; set; }
     }
 }
 
