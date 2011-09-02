@@ -48,6 +48,7 @@
     <Compile Include="HardwareIndexBufferTests.cs" />
     <Compile Include="RenderOperationTests.cs" />
     <Compile Include="ColorExtensionsTests.cs" />
+    <Compile Include="TextureManagerTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -53,6 +53,7 @@
     <Compile Include="Materials\Texture.cs" />
     <Compile Include="Materials\Pass.cs" />
     <Compile Include="Materials\Material.cs" />
+    <Compile Include="TextureManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
