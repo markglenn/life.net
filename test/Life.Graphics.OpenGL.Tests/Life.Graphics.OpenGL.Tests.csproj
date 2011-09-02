@@ -41,12 +41,14 @@
       <HintPath>..\..\lib\FakeItEasy.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="OpenGLVertexBufferTests.cs" />
     <Compile Include="OpenGLDeviceTests.cs" />
     <Compile Include="OpenGLIndexBufferTests.cs" />
+    <Compile Include="Materials\OpenGLTextureTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -66,5 +68,8 @@
       <Project>{1B9D624C-9801-428A-A296-78C37676A707}</Project>
       <Name>Life</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Materials\" />
   </ItemGroup>
 </Project>

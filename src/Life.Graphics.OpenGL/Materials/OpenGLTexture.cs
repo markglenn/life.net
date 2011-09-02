@@ -18,6 +18,11 @@ namespace Life.Graphics.OpenGL.Materials
 		
 		#endregion
 		
+		public uint TextureId
+		{
+			get { return this.textureId; }
+		}
+		
 		public OpenGLTexture( string name, IArchive archive )
 			: base( name, archive )
 		{
