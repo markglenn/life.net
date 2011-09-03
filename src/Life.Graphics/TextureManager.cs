@@ -10,16 +10,16 @@ namespace Life.Graphics
         #region [ Private Members ]
 
         private readonly IDictionary<string, Texture> textures = new Dictionary<string, Texture>( );
-        private readonly IDevice driver;
+        private readonly IDevice device;
 
         #endregion [ Private Members ]
 
-        public TextureManager( IDevice driver )
+        public TextureManager( IDevice device )
         {
-            if( driver == null ) 
-                throw new ArgumentNullException( "driver" );
+            if( device == null ) 
+                throw new ArgumentNullException( "device" );
 
-            this.driver = driver;
+            this.device = device;
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Life.Graphics
             if ( !this.textures.TryGetValue( filename, out texture ))
             {
                 // Tell the driver to create a texture from this
-                texture = this.driver.CreateTexture( archive, filename );
+                texture = this.device.CreateTexture( archive, filename );
 
                 this.textures[ filename ] = texture;
             }

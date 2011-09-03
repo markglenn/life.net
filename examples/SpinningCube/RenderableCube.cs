@@ -13,9 +13,11 @@ namespace SpinningCube
 		#region [ Private Members ]
 		
 		private readonly IDevice device;
+        private readonly TextureManager textureManager;
         private HardwareIndexBuffer indexBuffer;
         private HardwareVertexBuffer vertexBuffer;
         private RenderOperation renderOperation;
+        private Texture texture;
         
 		#endregion
  
@@ -23,6 +25,7 @@ namespace SpinningCube
 			: base( "Renderable Cube" )
 		{
 			this.device = device;
+			this.textureManager = new TextureManager( device );
             
 			this.WorldPosition = new Vector3( 0, 0, 3 );
 			this.WorldOrientation = Quaternion.FromAxisAngle( Vector3.UnitY, 0 );
@@ -30,7 +33,7 @@ namespace SpinningCube
 
 		#region [ implemented abstract members of Life.ResourceBase ]
 		
-		protected override bool DoLoad ()
+		protected override bool DoLoad( )
 		{
 			this.vertexBuffer = device.CreateVertexBuffer( TexturedVertex.VertexDefinition, 4 );
             this.indexBuffer = device.CreateIndexBuffer( IndexBufferFormat.UShort, 4 );

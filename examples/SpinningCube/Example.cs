@@ -9,6 +9,8 @@ using Life.Core;
 using Life.Math;
 using OpenTK.Graphics;
 using ExampleCore;
+using Life.Archive;
+using Life.Graphics.Materials;
 
 namespace SpinningCube
 {
@@ -17,6 +19,8 @@ namespace SpinningCube
 		#region [ Private Members ]
 		
         private readonly IDevice device;
+		private readonly IArchive archive;
+		private readonly Texture texture;
         private RenderableCube cube;
         private Camera camera;
         
@@ -24,6 +28,8 @@ namespace SpinningCube
  
 		public static void Main( string[ ] args )
 		{
+			IArchive archive = new FolderArchive( "../../../../media" );
+
 			var kernel = new Kernel( );
 			
 			var window = new OpenTK.GameWindow( 400, 300, 
@@ -35,7 +41,7 @@ namespace SpinningCube
 			
 			using( var windowService = new RenderWindowService( window ) )
 			using( var device = new OpenGLDevice( windowService ) )
-			using( var example = new Example( device ) )
+			using( var example = new Example( device, archive ) )
 			{
 				kernel.AddService( windowService );
 				kernel.AddService( device );
@@ -48,9 +54,11 @@ namespace SpinningCube
 			}
 		}
 		
-		public Example( IDevice device )
+		public Example( IDevice device, IArchive archive )
 		{
 			this.device = device;
+			this.archive = archive;
+			this.texture = this.device.CreateTexture( archive, "textures/bricks.jpg" );
 			
 			this.camera = new Camera( GetProjection( 400, 300 ), Vector3.Zero,
 				Quaternion.FromAxisAngle( Vector3.UnitY, 0 ) );
@@ -114,6 +122,7 @@ namespace SpinningCube
 		
 		public void Dispose ()
 		{
+			this.texture.Dispose( );
 			this.cube.Dispose( );
 			this.device.Dispose( );
 		}
